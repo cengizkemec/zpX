@@ -10,7 +10,7 @@
     <AssemblyName>zpX</AssemblyName>
     <StartupObject>zpX.UI.Program</StartupObject>
     <ApplicationManifest>app.manifest</ApplicationManifest>
-    <Version>0.9.1</Version>
+    <Version>0.10.0</Version>
     <Authors>zpX</Authors>
     <Product>zpX</Product>
     <ApplicationIcon>Assets\app.ico</ApplicationIcon>
@@ -21,6 +21,7 @@
 
   <ItemGroup>
     <PackageReference Include="Velopack" Version="1.2.161" />
+    <PackageReference Include="WPF-UI" Version="4.0.0" />
   </ItemGroup>
 
   <ItemGroup>

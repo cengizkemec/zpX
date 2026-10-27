@@ -15,11 +15,12 @@ using zpX.Core.Abstractions;
 using zpX.Core.Archives;
 using zpX.Localization;
 using zpX.UI.Helpers;
+using Wpf.Ui.Controls;
 using zpX.UI.Models;
 
 namespace zpX.UI;
 
-public partial class MainWindow : Window
+public partial class MainWindow : FluentWindow
 {
     private sealed class Location
     {
@@ -131,7 +132,6 @@ public partial class MainWindow : Window
         var maximized = WindowState == WindowState.Maximized;
         WindowFrame.BorderThickness = maximized ? new Thickness(0) : new Thickness(1);
         WindowFrame.Margin = maximized ? new Thickness(7) : new Thickness(0);
-        MaximizeButton.Content = maximized ? "\uE923" : "\uE922";
     }
 
     // ===================== Language =====================
@@ -144,7 +144,7 @@ public partial class MainWindow : Window
 
     private void LanguageItem_Click(object sender, RoutedEventArgs e)
     {
-        if (sender is not Button { Tag: string code }) return;
+        if (sender is not System.Windows.Controls.Button { Tag: string code }) return;
         Loc.SetLanguage(code);
         AppSettings.Current.Language = code;
         AppSettings.Current.Save();
@@ -228,13 +228,13 @@ public partial class MainWindow : Window
         LanguageButtonsPanel.Children.Clear();
         foreach (var lang in Loc.Languages)
         {
-            var btn = new Button { Style = (Style)FindResource("PopupMenuButton"), Tag = lang.Code };
+            var btn = new System.Windows.Controls.Button { Style = (Style)FindResource("PopupMenuButton"), Tag = lang.Code };
             btn.Click += LanguageItem_Click;
             var grid = new Grid { Width = 148 };
             grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
             grid.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto });
-            var name = new TextBlock { Text = lang.DisplayName, VerticalAlignment = VerticalAlignment.Center };
-            var check = new TextBlock
+            var name = new System.Windows.Controls.TextBlock { Text = lang.DisplayName, VerticalAlignment = VerticalAlignment.Center };
+            var check = new System.Windows.Controls.TextBlock
             {
                 Text = "\uE73E",
                 FontFamily = (FontFamily)FindResource("IconFont"),
@@ -258,11 +258,11 @@ public partial class MainWindow : Window
     {
         foreach (var child in LanguageButtonsPanel.Children)
         {
-            if (child is Button btn && btn.Content is Grid grid)
+            if (child is System.Windows.Controls.Button btn && btn.Content is Grid grid)
             {
                 foreach (var g in grid.Children)
                 {
-                    if (g is TextBlock tb && tb.Tag is string code)
+                    if (g is System.Windows.Controls.TextBlock tb && tb.Tag is string code)
                         tb.Visibility = code == Loc.CurrentLanguage ? Visibility.Visible : Visibility.Collapsed;
                 }
             }
@@ -772,13 +772,13 @@ public partial class MainWindow : Window
             {
                 var msg = Loc.Format("TestOk", result.CheckedEntries);
                 SetStatus(msg);
-                MessageBox.Show(this, msg, Loc.T("TestTitle"), MessageBoxButton.OK, MessageBoxImage.Information);
+                System.Windows.MessageBox.Show(this, msg, Loc.T("TestTitle"), System.Windows.MessageBoxButton.OK, MessageBoxImage.Information);
             }
             else
             {
                 var msg = Loc.Format("TestFailed", result.Error ?? string.Empty);
                 SetStatus(msg, true);
-                MessageBox.Show(this, msg, Loc.T("TestTitle"), MessageBoxButton.OK, MessageBoxImage.Warning);
+                System.Windows.MessageBox.Show(this, msg, Loc.T("TestTitle"), System.Windows.MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
         catch (Exception ex) { ShowError(ex); SetStatus(Loc.T("Ready"), true); }
@@ -974,8 +974,8 @@ public partial class MainWindow : Window
         var paths = GetSelectedPaths();
         if (paths.Count == 0) return;
 
-        var result = MessageBox.Show(this, $"Delete {paths.Count} item(s)?", "zpX", MessageBoxButton.YesNo, MessageBoxImage.Question);
-        if (result != MessageBoxResult.Yes) return;
+        var result = System.Windows.MessageBox.Show(this, $"Delete {paths.Count} item(s)?", "zpX", System.Windows.MessageBoxButton.YesNo, MessageBoxImage.Question);
+        if (result != System.Windows.MessageBoxResult.Yes) return;
 
         try
         {
@@ -1076,7 +1076,7 @@ public partial class MainWindow : Window
         if (Directory.Exists(text))
             await NavigateFileSystemAsync(text);
         else
-            MessageBox.Show(this, Loc.T("OpenFirst"), "zpX", MessageBoxButton.OK, MessageBoxImage.Information);
+            System.Windows.MessageBox.Show(this, Loc.T("OpenFirst"), "zpX", System.Windows.MessageBoxButton.OK, MessageBoxImage.Information);
     }
 
     private async void FileList_MouseDoubleClick(object sender, MouseButtonEventArgs e)
@@ -1295,7 +1295,7 @@ public partial class MainWindow : Window
 
     private void ShowError(Exception ex)
     {
-        MessageBox.Show(this, ex.Message, Loc.T("ErrorTitle"), MessageBoxButton.OK, MessageBoxImage.Error);
+        System.Windows.MessageBox.Show(this, ex.Message, Loc.T("ErrorTitle"), System.Windows.MessageBoxButton.OK, MessageBoxImage.Error);
     }
 
     private static IProgress<string> CreateThrottledProgress(Action<string> report)
