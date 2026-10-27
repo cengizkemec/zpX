@@ -83,21 +83,7 @@
                                 <TextBlock x:Name="LanguageHeader" Text="Language" Margin="12,7,12,5"
                                            FontSize="11" FontWeight="SemiBold"
                                            Foreground="{DynamicResource TextSecondaryBrush}"/>
-                                <Button Style="{StaticResource PopupMenuButton}" Tag="en" Click="LanguageItem_Click">
-                                    <Grid Width="148"><TextBlock Text="English"/><TextBlock x:Name="LangEnCheck" Text="&#xE73E;" FontFamily="{StaticResource IconFont}" FontSize="11" Foreground="{DynamicResource AccentBrush}" HorizontalAlignment="Right" VerticalAlignment="Center"/></Grid>
-                                </Button>
-                                <Button Style="{StaticResource PopupMenuButton}" Tag="tr" Click="LanguageItem_Click">
-                                    <Grid Width="148"><TextBlock Text="Türkçe"/><TextBlock x:Name="LangTrCheck" Text="&#xE73E;" FontFamily="{StaticResource IconFont}" FontSize="11" Foreground="{DynamicResource AccentBrush}" HorizontalAlignment="Right" VerticalAlignment="Center"/></Grid>
-                                </Button>
-                                <Button Style="{StaticResource PopupMenuButton}" Tag="de" Click="LanguageItem_Click">
-                                    <Grid Width="148"><TextBlock Text="Deutsch"/><TextBlock x:Name="LangDeCheck" Text="&#xE73E;" FontFamily="{StaticResource IconFont}" FontSize="11" Foreground="{DynamicResource AccentBrush}" HorizontalAlignment="Right" VerticalAlignment="Center"/></Grid>
-                                </Button>
-                                <Button Style="{StaticResource PopupMenuButton}" Tag="fr" Click="LanguageItem_Click">
-                                    <Grid Width="148"><TextBlock Text="Français"/><TextBlock x:Name="LangFrCheck" Text="&#xE73E;" FontFamily="{StaticResource IconFont}" FontSize="11" Foreground="{DynamicResource AccentBrush}" HorizontalAlignment="Right" VerticalAlignment="Center"/></Grid>
-                                </Button>
-                                <Button Style="{StaticResource PopupMenuButton}" Tag="es" Click="LanguageItem_Click">
-                                    <Grid Width="148"><TextBlock Text="Español"/><TextBlock x:Name="LangEsCheck" Text="&#xE73E;" FontFamily="{StaticResource IconFont}" FontSize="11" Foreground="{DynamicResource AccentBrush}" HorizontalAlignment="Right" VerticalAlignment="Center"/></Grid>
-                                </Button>
+                                <StackPanel x:Name="LanguageButtonsPanel"/>
                             </StackPanel>
                         </Border>
                     </Popup>
@@ -233,19 +219,27 @@
                           SelectionChanged="FileList_SelectionChanged">
                     <ListView.ContextMenu>
                         <ContextMenu>
-                            <MenuItem x:Name="CtxOpen" Header="Open" Click="CtxOpen_Click"/>
-                            <MenuItem x:Name="CtxCopy" Header="Copy" Click="CopyButton_Click"/>
-                            <MenuItem x:Name="CtxCut" Header="Cut" Click="CutButton_Click"/>
-                            <MenuItem x:Name="CtxPaste" Header="Paste" Click="PasteButton_Click"/>
-                            <MenuItem x:Name="CtxDelete" Header="Delete" Click="DeleteButton_Click"/>
-                            <MenuItem x:Name="CtxRename" Header="Rename" Click="RenameButton_Click"/>
-                            <Separator/>
-                            <MenuItem x:Name="CtxNewFolder" Header="New folder" Click="NewFolderButton_Click"/>
-                            <MenuItem x:Name="CtxCompress" Header="Compress to archive" Click="CtxCompress_Click"/>
-                            <MenuItem x:Name="CtxExtract" Header="Extract" Click="ExtractButton_Click"/>
-                            <Separator/>
-                            <MenuItem x:Name="CtxProperties" Header="Properties" Click="PropertiesButton_Click"/>
-                            <MenuItem x:Name="CtxHash" Header="Hash (SHA-256)" Click="HashButton_Click"/>
+                    <MenuItem x:Name="CtxOpen" Header="Open" Click="CtxOpen_Click"/>
+                    <MenuItem x:Name="CtxExtractHere" Header="Extract here" Click="ExtractButton_Click"/>
+                    <MenuItem x:Name="CtxExtractTo" Header="Extract to..." Click="ExtractButton_Click"/>
+                    <MenuItem x:Name="CtxTest" Header="Test" Click="TestButton_Click"/>
+                    <Separator/>
+                    <MenuItem x:Name="CtxCompressMenu" Header="Compress to">
+                        <MenuItem x:Name="CtxCompressZpx" Header="zpX (.zpx)" Click="CtxCompress_Click"/>
+                        <MenuItem x:Name="CtxCompressZip" Header="ZIP (.zip)" Click="CtxCompressZip_Click"/>
+                        <MenuItem x:Name="CtxCompressOptions" Header="Add to archive..." Click="CtxCompressOptions_Click"/>
+                    </MenuItem>
+                    <Separator/>
+                    <MenuItem x:Name="CtxCopy" Header="Copy" Click="CopyButton_Click"/>
+                    <MenuItem x:Name="CtxCut" Header="Cut" Click="CutButton_Click"/>
+                    <MenuItem x:Name="CtxPaste" Header="Paste" Click="PasteButton_Click"/>
+                    <MenuItem x:Name="CtxDelete" Header="Delete" Click="DeleteButton_Click"/>
+                    <MenuItem x:Name="CtxRename" Header="Rename" Click="RenameButton_Click"/>
+                    <Separator/>
+                    <MenuItem x:Name="CtxNewFolder" Header="New folder" Click="NewFolderButton_Click"/>
+                    <Separator/>
+                    <MenuItem x:Name="CtxProperties" Header="Properties" Click="PropertiesButton_Click"/>
+                    <MenuItem x:Name="CtxHash" Header="Hash (SHA-256)" Click="HashButton_Click"/>
                         </ContextMenu>
                     </ListView.ContextMenu>
                     <ListView.ItemTemplate>
@@ -314,6 +308,7 @@
                         <TextBlock x:Name="StatusText" Text="Ready" FontSize="11.5" Foreground="{DynamicResource TextSecondaryBrush}" VerticalAlignment="Center"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
+                        <ProgressBar x:Name="ProgressBar" Width="120" Height="4" Margin="0,0,10,0" Visibility="Collapsed" Foreground="{DynamicResource AccentBrush}" Background="{DynamicResource BorderBrush}" BorderThickness="0"/>
                         <TextBlock x:Name="ItemsCountText" Text="" FontSize="11.5" Foreground="{DynamicResource TextSecondaryBrush}"/>
                         <Border Width="1" Height="10" Background="{DynamicResource BorderBrush}" Margin="10,0"/>
                         <TextBlock x:Name="TotalSizeText" Text="" FontSize="11.5" Foreground="{DynamicResource TextSecondaryBrush}"/>

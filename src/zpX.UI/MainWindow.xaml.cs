@@ -66,6 +66,7 @@ public partial class MainWindow : Window
     private void MainWindow_Loaded(object sender, RoutedEventArgs e)
     {
         ApplyLanguage();
+        BuildLanguageMenu();
         UpdateThemeGlyph();
         UpdateSearchPlaceholder();
 
@@ -188,14 +189,18 @@ public partial class MainWindow : Window
 
         // context menu headers
         CtxOpen.Header = Loc.T("Open");
+        CtxExtractHere.Header = Loc.T("Extract");
+        CtxExtractTo.Header = Loc.T("Extract");
+        CtxTest.Header = Loc.T("Test");
+        CtxCompressZpx.Header = "zpX (.zpx)";
+        CtxCompressZip.Header = "ZIP (.zip)";
+        CtxCompressOptions.Header = Loc.T("Create");
         CtxCopy.Header = Loc.T("Copy");
         CtxCut.Header = Loc.T("Cut");
         CtxPaste.Header = Loc.T("Paste");
         CtxDelete.Header = Loc.T("Delete");
         CtxRename.Header = Loc.T("Rename");
         CtxNewFolder.Header = Loc.T("NewFolder");
-        CtxCompress.Header = Loc.T("Compress");
-        CtxExtract.Header = Loc.T("Extract");
         CtxProperties.Header = Loc.T("Properties");
         CtxHash.Header = Loc.T("Hash");
 
@@ -208,13 +213,51 @@ public partial class MainWindow : Window
             SetStatus(Loc.T("Ready"));
     }
 
+    private void BuildLanguageMenu()
+    {
+        LanguageButtonsPanel.Children.Clear();
+        foreach (var lang in Loc.Languages)
+        {
+            var btn = new Button { Style = (Style)FindResource("PopupMenuButton"), Tag = lang.Code };
+            btn.Click += LanguageItem_Click;
+            var grid = new Grid { Width = 148 };
+            grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
+            grid.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto });
+            var name = new TextBlock { Text = lang.DisplayName, VerticalAlignment = VerticalAlignment.Center };
+            var check = new TextBlock
+            {
+                Text = "\uE73E",
+                FontFamily = (FontFamily)FindResource("IconFont"),
+                FontSize = 11,
+                Foreground = (Brush)FindResource("AccentBrush"),
+                HorizontalAlignment = HorizontalAlignment.Right,
+                VerticalAlignment = VerticalAlignment.Center,
+                Tag = lang.Code,
+                Visibility = lang.Code == Loc.CurrentLanguage ? Visibility.Visible : Visibility.Collapsed
+            };
+            Grid.SetColumn(name, 0);
+            Grid.SetColumn(check, 1);
+            grid.Children.Add(name);
+            grid.Children.Add(check);
+            btn.Content = grid;
+            LanguageButtonsPanel.Children.Add(btn);
+        }
+    }
+
     private void UpdateLanguageChecks()
     {
-        LangEnCheck.Visibility = Loc.CurrentLanguage == "en" ? Visibility.Visible : Visibility.Collapsed;
-        LangTrCheck.Visibility = Loc.CurrentLanguage == "tr" ? Visibility.Visible : Visibility.Collapsed;
-        LangDeCheck.Visibility = Loc.CurrentLanguage == "de" ? Visibility.Visible : Visibility.Collapsed;
-        LangFrCheck.Visibility = Loc.CurrentLanguage == "fr" ? Visibility.Visible : Visibility.Collapsed;
-        LangEsCheck.Visibility = Loc.CurrentLanguage == "es" ? Visibility.Visible : Visibility.Collapsed;
+        foreach (var child in LanguageButtonsPanel.Children)
+        {
+            if (child is Button btn && btn.Content is Grid grid)
+            {
+                foreach (var g in grid.Children)
+                {
+                    if (g is TextBlock tb && tb.Tag is string code)
+                        tb.Visibility = code == Loc.CurrentLanguage ? Visibility.Visible : Visibility.Collapsed;
+                }
+            }
+        }
+        LanguageButtonText.Text = Loc.CurrentLanguage.ToUpperInvariant();
     }
 
     // ===================== Navigation =====================
@@ -393,7 +436,7 @@ public partial class MainWindow : Window
     {
         if (_location.IsThisPc)
         {
-            PathBox.Text = "This PC";
+            PathBox.Text = Loc.T("ThisPC");
             PathBox.IsReadOnly = true;
             PathBox.ToolTip = null;
         }
@@ -769,15 +812,34 @@ public partial class MainWindow : Window
         await CreateArchiveAsync(paths, DefaultArchiveName(paths[0]));
     }
 
+    private async void CtxCompressZip_Click(object sender, RoutedEventArgs e)
+    {
+        var paths = GetSelectedPaths();
+        if (paths.Count == 0) return;
+        await CreateArchiveAsync(paths, DefaultArchiveName(paths[0]));
+    }
+
+    private async void CtxCompressOptions_Click(object sender, RoutedEventArgs e)
+    {
+        var paths = GetSelectedPaths();
+        if (paths.Count == 0) return;
+        await CreateArchiveAsync(paths, DefaultArchiveName(paths[0]));
+    }
+
     private async Task CreateArchiveAsync(List<string> sources, string suggestedName)
     {
+        var optsDlg = new CompressionOptionsWindow();
+        optsDlg.Owner = this;
+        if (optsDlg.ShowDialog() != true) return;
+
+        var ext = optsDlg.FormatExtension;
         var dialog = new SaveFileDialog
         {
             Title = Loc.T("SaveTitle"),
-            FileName = suggestedName + ArchiveCreator.Extension,
-            DefaultExt = ArchiveCreator.Extension,
+            FileName = suggestedName + ext,
+            DefaultExt = ext,
             AddExtension = true,
-            Filter = "zpX (*.zpx)|*.zpx|ZIP (*.zip)|*.zip"
+            Filter = ext == ".zip" ? "ZIP (*.zip)|*.zip" : "zpX (*.zpx)|*.zpx"
         };
         if (dialog.ShowDialog(this) != true) return;
         var output = dialog.FileName;
@@ -785,17 +847,39 @@ public partial class MainWindow : Window
         try
         {
             SetBusy(true);
-            var progress = CreateThrottledProgress(p => SetStatus(Loc.Format("Creating", p)));
+            ProgressBar.Visibility = Visibility.Visible;
+            ProgressBar.Value = 0;
+            var progress = new Progress<ArchiveProgress>(p =>
+            {
+                ProgressBar.Value = p.Percent;
+                SetStatus($"{Loc.T("Creating")} {p.FileName} ({p.Percent}%)");
+            });
+
+            var options = new ArchiveCreateOptions
+            {
+                OutputPath = output,
+                CompressionLevel = optsDlg.CompressionLevel,
+                Password = optsDlg.Password,
+                EncryptFileNames = optsDlg.EncryptFileNames,
+                CreateSfx = optsDlg.CreateSfx
+            };
+
             await Task.Run(() =>
             {
-                ArchiveCreator.Create(sources, new ArchiveCreateOptions { OutputPath = output }, progress);
+                ArchiveCreator.Create(sources, options, progress);
             });
+
             var saved = ArchiveCreator.EnsureExtension(output);
             var done = Loc.Format("CreateDone", Path.GetFileName(saved));
             SetStatus(done);
+            ProgressBar.Value = 100;
         }
         catch (Exception ex) { ShowError(ex); SetStatus(Loc.T("Ready"), true); }
-        finally { SetBusy(false); }
+        finally
+        {
+            SetBusy(false);
+            ProgressBar.Visibility = Visibility.Collapsed;
+        }
     }
 
     private static string DefaultArchiveName(string source)

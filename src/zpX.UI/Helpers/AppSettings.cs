@@ -70,7 +70,7 @@ public sealed class AppSettings
 
     private static string NormalizeLanguage(string? code)
     {
-        var supported = new[] { "en", "tr", "de", "fr", "es" };
+        var supported = new[] { "en", "tr", "es", "fr", "de", "it", "pt", "ru", "ja", "zh" };
         if (!string.IsNullOrWhiteSpace(code) &&
             supported.Contains(code, StringComparer.OrdinalIgnoreCase))
             return code.ToLowerInvariant();

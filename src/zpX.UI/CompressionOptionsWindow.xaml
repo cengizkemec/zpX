@@ -1,0 +1,47 @@
+<Window x:Class="zpX.UI.CompressionOptionsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Compression options" Height="420" Width="420"
+        WindowStartupLocation="CenterOwner"
+        ResizeMode="NoResize"
+        Background="{DynamicResource WindowBackgroundBrush}">
+    <Grid Margin="18">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Compression options" FontSize="16" FontWeight="SemiBold" Margin="0,0,0,14"/>
+
+        <StackPanel Grid.Row="1">
+            <TextBlock Text="Format" Margin="0,4,0,2" Foreground="{DynamicResource TextSecondaryBrush}"/>
+            <ComboBox x:Name="FormatBox" Margin="0,0,0,10">
+                <ComboBoxItem Content="zpX (.zpx)" IsSelected="True"/>
+                <ComboBoxItem Content="ZIP (.zip)"/>
+            </ComboBox>
+
+            <TextBlock Text="Compression level" Margin="0,4,0,2" Foreground="{DynamicResource TextSecondaryBrush}"/>
+            <ComboBox x:Name="LevelBox" Margin="0,0,0,10">
+                <ComboBoxItem Content="0 - Store" Tag="0"/>
+                <ComboBoxItem Content="1 - Fastest" Tag="1"/>
+                <ComboBoxItem Content="3 - Fast" Tag="3"/>
+                <ComboBoxItem Content="5 - Normal" Tag="5" IsSelected="True"/>
+                <ComboBoxItem Content="7 - Maximum" Tag="7"/>
+                <ComboBoxItem Content="9 - Ultra" Tag="9"/>
+            </ComboBox>
+
+            <TextBlock Text="Password (AES-256)" Margin="0,4,0,2" Foreground="{DynamicResource TextSecondaryBrush}"/>
+            <PasswordBox x:Name="PasswordBox" Margin="0,0,0,6"/>
+            <PasswordBox x:Name="PasswordConfirmBox" Margin="0,0,0,6"/>
+            <CheckBox x:Name="EncryptNamesCheckBox" Content="Encrypt file names" Margin="0,0,0,10"/>
+
+            <CheckBox x:Name="SfxCheckBox" Content="Create self-extracting archive (.exe)" Margin="0,0,0,10"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Content="Cancel" Click="CancelButton_Click" Padding="14,6" Margin="0,0,8,0"/>
+            <Button Content="OK" Click="OkButton_Click" Padding="14,6"/>
+        </StackPanel>
+    </Grid>
+</Window>

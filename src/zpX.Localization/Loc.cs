@@ -14,9 +14,14 @@ public static class Loc
     [
         new("en", "English"),
         new("tr", "Türkçe"),
-        new("de", "Deutsch"),
+        new("es", "Español"),
         new("fr", "Français"),
-        new("es", "Español")
+        new("de", "Deutsch"),
+        new("it", "Italiano"),
+        new("pt", "Português"),
+        new("ru", "Русский"),
+        new("ja", "日本語"),
+        new("zh", "中文")
     ];
 
     public static CultureInfo Culture { get; private set; } = CultureInfo.CurrentUICulture;
