@@ -94,6 +94,12 @@ public partial class MainWindow : Window
         }
     }
 
+    private void AboutButton_Click(object sender, RoutedEventArgs e)
+    {
+        var dlg = new AboutWindow { Owner = this };
+        dlg.ShowDialog();
+    }
+
     private void ThemeButton_Click(object sender, RoutedEventArgs e)
     {
         ThemeManager.Toggle();
