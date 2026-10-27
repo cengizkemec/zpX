@@ -1,38 +1,52 @@
 # zpX
 
-A modern, minimal and fast archive tool inspired by Telegram. Built with C# + WPF on .NET 9.
+**zpX** is a modern, fast and free archive manager for Windows 10/11, inspired by 7-Zip and Telegram.
+
+- Publisher: **Cengiz Kemeç**
+- Website: https://cengizkemec.com.tr/
+- GitHub: https://github.com/cengizkemec
+- Repository: https://github.com/cengizkemec/zpX
+- License: MIT
 
 ## Features
 
-- **Modern UI** - Clean, Telegram-inspired interface with custom frameless title bar
-- **Dark / Light Themes** - Switch between themes instantly
-- **X Accent Design** - Distinctive zpX logo with emphasized X`n- **Wide Archive Support** - Open ZIP, 7Z, RAR, TAR, GZ, BZ2, XZ, ZST, .zpx`n- **Drag & Drop** - Simply drag and drop archives into the window
-- **Integrity Test** - Built-in archive health check
-- **Multilingual** - Turkish, English, German, French, Spanish
-- **Fast & Lightweight** - Powered by SharpCompress and ZstdSharp.Port
+- Modern dark & light themes (Telegram-inspired), custom frameless title bar
+- Built-in file manager: browse drives/folders, copy/move/delete/rename/new folder, drag & drop
+- Archive support: open, extract, test (integrity), create
+- Formats: ZIP, 7Z, RAR, TAR, GZ, BZ2, XZ, ZST, CAB, ISO, MSI, NSIS, WIM, DMG, VHD/VHDX, and more (read)
+- `.zpx` native format (ZIP container + manifest)
+- Compression options: Store/Fastest/Fast/Normal/Maximum/Ultra, AES-256 password protection, encrypt file names
+- SHA-256 / MD5 / SHA-1 / SHA-512 hashing tools
+- Properties dialog, archive test with progress
+- Multilingual: English, Turkish, Spanish, French, German, Italian, Portuguese, Russian, Japanese, Chinese
+- Explorer integration: right-click "Compress with zpX", "Extract here with zpX"
+- Silent background operations for context-menu actions
+- Inno Setup installer: choose install location, desktop & Start Menu shortcuts
 
 ## Download
 
 Get the latest release from [Releases](https://github.com/cengizkemec/zpX/releases).
 
-**v0.5.0** (recommended): run `zpX-win-Setup.exe` — adds application icon, localized context menus, themed dialogs, all-drives browser, silent background operations.
-
-Portable: `zpX-0.2.0-win-x64.zip` (extract and run `zpX.exe`; requires .NET 9 Desktop Runtime).
+- `zpX-Setup.exe` — installer (location choice + desktop shortcut)
+- `zpX-Portable.zip` — portable (requires .NET 9 Desktop Runtime)
 
 ## Requirements
 
 - Windows 10/11 x64
-- [.NET 9 Desktop Runtime](https://dotnet.microsoft.com/download/dotnet/9.0) (portable build only; the installer bundles it)
+- [.NET 9 Desktop Runtime](https://dotnet.microsoft.com/download/dotnet/9.0) (portable build only)
 
 ## Build from Source
 
-`ash
-
+```bash
 git clone https://github.com/cengizkemec/zpX.git
 cd zpX
 dotnet build zpX.slnx -c Release
-` 
+```
 
-## License
+## About
+
+zpX is developed by Cengiz Kemeç.  
+Website: https://cengizkemec.com.tr/  
+GitHub: https://github.com/cengizkemec
 
 This project is licensed under the [MIT License](LICENSE).
