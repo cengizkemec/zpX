@@ -46,4 +46,16 @@
   <data name="Opening" xml:space="preserve"><value>Abriendo archivo...</value></data>
   <data name="Testing" xml:space="preserve"><value>Probando: {0}</value></data>
   <data name="ArchiveManager" xml:space="preserve"><value>Gestor de archivos</value></data>
+  <data name="Copy" xml:space="preserve"><value>Copiar</value></data>
+  <data name="Cut" xml:space="preserve"><value>Cortar</value></data>
+  <data name="Paste" xml:space="preserve"><value>Pegar</value></data>
+  <data name="Delete" xml:space="preserve"><value>Eliminar</value></data>
+  <data name="Rename" xml:space="preserve"><value>Renombrar</value></data>
+  <data name="NewFolder" xml:space="preserve"><value>Nueva carpeta</value></data>
+  <data name="Compress" xml:space="preserve"><value>Comprimir en archivo</value></data>
+  <data name="Properties" xml:space="preserve"><value>Propiedades</value></data>
+  <data name="Hash" xml:space="preserve"><value>Hash (SHA-256)</value></data>
+  <data name="EmptyFolder" xml:space="preserve"><value>Esta carpeta está vacía</value></data>
+  <data name="EmptyFolderHint" xml:space="preserve"><value>Suelta archivos aquí o usa la barra de herramientas</value></data>
+  <data name="NewFolderName" xml:space="preserve"><value>Nueva carpeta</value></data>
 </root>

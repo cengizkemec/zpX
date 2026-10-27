@@ -12,6 +12,8 @@ public sealed class AppSettings
     public string Theme { get; set; } = "Dark";
     public string Accent { get; set; } = "#3390EC";
     public string Language { get; set; } = "en";
+    public bool ShellIntegration { get; set; } = true;
+    public bool ShowHiddenFiles { get; set; } = false;
 
     public static AppSettings Current { get; private set; } = new();
 

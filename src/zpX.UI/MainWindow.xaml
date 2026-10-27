@@ -3,8 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:models="clr-namespace:zpX.UI.Models"
         Title="zpX"
-        Height="720" Width="1100"
-        MinHeight="540" MinWidth="900"
+        Height="760" Width="1180"
+        MinHeight="560" MinWidth="960"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
         ResizeMode="CanResize"
@@ -31,8 +31,8 @@
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="40"/>
-                <RowDefinition Height="62"/>
-                <RowDefinition Height="40"/>
+                <RowDefinition Height="64"/>
+                <RowDefinition Height="44"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="30"/>
             </Grid.RowDefinitions>
@@ -83,44 +83,19 @@
                                            FontSize="11" FontWeight="SemiBold"
                                            Foreground="{DynamicResource TextSecondaryBrush}"/>
                                 <Button Style="{StaticResource PopupMenuButton}" Tag="en" Click="LanguageItem_Click">
-                                    <Grid Width="148">
-                                        <TextBlock Text="English"/>
-                                        <TextBlock x:Name="LangEnCheck" Text="&#xE73E;" FontFamily="{StaticResource IconFont}"
-                                                   FontSize="11" Foreground="{DynamicResource AccentBrush}"
-                                                   HorizontalAlignment="Right" VerticalAlignment="Center"/>
-                                    </Grid>
+                                    <Grid Width="148"><TextBlock Text="English"/><TextBlock x:Name="LangEnCheck" Text="&#xE73E;" FontFamily="{StaticResource IconFont}" FontSize="11" Foreground="{DynamicResource AccentBrush}" HorizontalAlignment="Right" VerticalAlignment="Center"/></Grid>
                                 </Button>
                                 <Button Style="{StaticResource PopupMenuButton}" Tag="tr" Click="LanguageItem_Click">
-                                    <Grid Width="148">
-                                        <TextBlock Text="Türkçe"/>
-                                        <TextBlock x:Name="LangTrCheck" Text="&#xE73E;" FontFamily="{StaticResource IconFont}"
-                                                   FontSize="11" Foreground="{DynamicResource AccentBrush}"
-                                                   HorizontalAlignment="Right" VerticalAlignment="Center"/>
-                                    </Grid>
+                                    <Grid Width="148"><TextBlock Text="Türkçe"/><TextBlock x:Name="LangTrCheck" Text="&#xE73E;" FontFamily="{StaticResource IconFont}" FontSize="11" Foreground="{DynamicResource AccentBrush}" HorizontalAlignment="Right" VerticalAlignment="Center"/></Grid>
                                 </Button>
                                 <Button Style="{StaticResource PopupMenuButton}" Tag="de" Click="LanguageItem_Click">
-                                    <Grid Width="148">
-                                        <TextBlock Text="Deutsch"/>
-                                        <TextBlock x:Name="LangDeCheck" Text="&#xE73E;" FontFamily="{StaticResource IconFont}"
-                                                   FontSize="11" Foreground="{DynamicResource AccentBrush}"
-                                                   HorizontalAlignment="Right" VerticalAlignment="Center"/>
-                                    </Grid>
+                                    <Grid Width="148"><TextBlock Text="Deutsch"/><TextBlock x:Name="LangDeCheck" Text="&#xE73E;" FontFamily="{StaticResource IconFont}" FontSize="11" Foreground="{DynamicResource AccentBrush}" HorizontalAlignment="Right" VerticalAlignment="Center"/></Grid>
                                 </Button>
                                 <Button Style="{StaticResource PopupMenuButton}" Tag="fr" Click="LanguageItem_Click">
-                                    <Grid Width="148">
-                                        <TextBlock Text="Français"/>
-                                        <TextBlock x:Name="LangFrCheck" Text="&#xE73E;" FontFamily="{StaticResource IconFont}"
-                                                   FontSize="11" Foreground="{DynamicResource AccentBrush}"
-                                                   HorizontalAlignment="Right" VerticalAlignment="Center"/>
-                                    </Grid>
+                                    <Grid Width="148"><TextBlock Text="Français"/><TextBlock x:Name="LangFrCheck" Text="&#xE73E;" FontFamily="{StaticResource IconFont}" FontSize="11" Foreground="{DynamicResource AccentBrush}" HorizontalAlignment="Right" VerticalAlignment="Center"/></Grid>
                                 </Button>
                                 <Button Style="{StaticResource PopupMenuButton}" Tag="es" Click="LanguageItem_Click">
-                                    <Grid Width="148">
-                                        <TextBlock Text="Español"/>
-                                        <TextBlock x:Name="LangEsCheck" Text="&#xE73E;" FontFamily="{StaticResource IconFont}"
-                                                   FontSize="11" Foreground="{DynamicResource AccentBrush}"
-                                                   HorizontalAlignment="Right" VerticalAlignment="Center"/>
-                                    </Grid>
+                                    <Grid Width="148"><TextBlock Text="Español"/><TextBlock x:Name="LangEsCheck" Text="&#xE73E;" FontFamily="{StaticResource IconFont}" FontSize="11" Foreground="{DynamicResource AccentBrush}" HorizontalAlignment="Right" VerticalAlignment="Center"/></Grid>
                                 </Button>
                             </StackPanel>
                         </Border>
@@ -131,76 +106,66 @@
             <!-- ===== Toolbar ===== -->
             <Border Grid.Row="1" Background="{DynamicResource ToolbarBrush}"
                     BorderBrush="{DynamicResource BorderBrush}" BorderThickness="0,0,0,1">
-                <Grid Margin="16,0">
+                <Grid Margin="12,0">
                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                        <Button x:Name="NewButton" Style="{StaticResource PrimaryButton}" Click="NewButton_Click">
+                        <Button x:Name="NewButton" Style="{StaticResource PrimaryButton}" Click="NewButton_Click" Margin="0,0,2,0">
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock FontFamily="{StaticResource IconFont}" Text="&#xE710;" FontSize="12"
-                                           VerticalAlignment="Center" Margin="0,0,8,0"/>
+                                <TextBlock FontFamily="{StaticResource IconFont}" Text="&#xE710;" FontSize="12" VerticalAlignment="Center" Margin="0,0,8,0"/>
                                 <TextBlock x:Name="NewText" Text="New" VerticalAlignment="Center"/>
                             </StackPanel>
                         </Button>
 
-                        <Border Width="1" Height="22" Background="{DynamicResource BorderBrush}" Margin="10,0"/>
-
                         <Button x:Name="OpenButton" Style="{StaticResource ToolButton}" Click="OpenButton_Click" Margin="0,0,2,0">
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock FontFamily="{StaticResource IconFont}" Text="&#xE8E5;" FontSize="14"
-                                           Foreground="{DynamicResource TextSecondaryBrush}"
-                                           VerticalAlignment="Center" Margin="0,0,8,0"/>
+                                <TextBlock FontFamily="{StaticResource IconFont}" Text="&#xE8E5;" FontSize="14" Foreground="{DynamicResource TextSecondaryBrush}" VerticalAlignment="Center" Margin="0,0,8,0"/>
                                 <TextBlock x:Name="OpenText" Text="Open" VerticalAlignment="Center"/>
                             </StackPanel>
                         </Button>
 
                         <Button x:Name="ExtractButton" Style="{StaticResource ToolButton}" Click="ExtractButton_Click" Margin="0,0,2,0">
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock FontFamily="{StaticResource IconFont}" Text="&#xE8DE;" FontSize="14"
-                                           Foreground="{DynamicResource TextSecondaryBrush}"
-                                           VerticalAlignment="Center" Margin="0,0,8,0"/>
+                                <TextBlock FontFamily="{StaticResource IconFont}" Text="&#xE8DE;" FontSize="14" Foreground="{DynamicResource TextSecondaryBrush}" VerticalAlignment="Center" Margin="0,0,8,0"/>
                                 <TextBlock x:Name="ExtractText" Text="Extract" VerticalAlignment="Center"/>
                             </StackPanel>
                         </Button>
 
-                        <Button x:Name="TestButton" Style="{StaticResource ToolButton}" Click="TestButton_Click">
+                        <Button x:Name="TestButton" Style="{StaticResource ToolButton}" Click="TestButton_Click" Margin="0,0,8,0">
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock FontFamily="{StaticResource IconFont}" Text="&#xE73E;" FontSize="13"
-                                           Foreground="{DynamicResource TextSecondaryBrush}"
-                                           VerticalAlignment="Center" Margin="0,0,8,0"/>
+                                <TextBlock FontFamily="{StaticResource IconFont}" Text="&#xE73E;" FontSize="13" Foreground="{DynamicResource TextSecondaryBrush}" VerticalAlignment="Center" Margin="0,0,8,0"/>
                                 <TextBlock x:Name="TestText" Text="Test" VerticalAlignment="Center"/>
                             </StackPanel>
                         </Button>
+
+                        <Border Width="1" Height="24" Background="{DynamicResource BorderBrush}" Margin="0,0,8,0"/>
+
+                        <Button x:Name="CopyButton" Style="{StaticResource IconButton}" Width="30" Height="30" Content="&#xE8C8;" Click="CopyButton_Click" ToolTip="Copy"/>
+                        <Button x:Name="CutButton" Style="{StaticResource IconButton}" Width="30" Height="30" Content="&#xE8C6;" Click="CutButton_Click" ToolTip="Cut"/>
+                        <Button x:Name="PasteButton" Style="{StaticResource IconButton}" Width="30" Height="30" Content="&#xE77F;" Click="PasteButton_Click" ToolTip="Paste"/>
+                        <Button x:Name="DeleteButton" Style="{StaticResource IconButton}" Width="30" Height="30" Content="&#xE74D;" Click="DeleteButton_Click" ToolTip="Delete"/>
+                        <Button x:Name="RenameButton" Style="{StaticResource IconButton}" Width="30" Height="30" Content="&#xE8AC;" Click="RenameButton_Click" ToolTip="Rename"/>
+                        <Button x:Name="NewFolderButton" Style="{StaticResource IconButton}" Width="30" Height="30" Content="&#xE8F4;" Click="NewFolderButton_Click" ToolTip="New folder"/>
+                        <Button x:Name="PropertiesButton" Style="{StaticResource IconButton}" Width="30" Height="30" Content="&#xE946;" Click="PropertiesButton_Click" ToolTip="Properties"/>
+                        <Button x:Name="HashButton" Style="{StaticResource IconButton}" Width="30" Height="30" Content="&#xE83F;" Click="HashButton_Click" ToolTip="Hash"/>
                     </StackPanel>
 
-                    <Grid HorizontalAlignment="Right" VerticalAlignment="Center" Width="280">
-                        <TextBox x:Name="SearchBox" Style="{StaticResource SearchBox}"
-                                 TextChanged="SearchBox_TextChanged"/>
-                        <TextBlock FontFamily="{StaticResource IconFont}" Text="&#xE721;" FontSize="12"
-                                   Foreground="{DynamicResource TextSecondaryBrush}"
-                                   VerticalAlignment="Center" HorizontalAlignment="Left" Margin="12,0,0,0"
-                                   IsHitTestVisible="False"/>
-                        <TextBlock x:Name="SearchPlaceholder" Text="Search..."
-                                   FontSize="12.5" Foreground="{DynamicResource TextSecondaryBrush}"
-                                   VerticalAlignment="Center" Margin="32,0,0,0" IsHitTestVisible="False"/>
+                    <Grid HorizontalAlignment="Right" VerticalAlignment="Center" Width="260">
+                        <TextBox x:Name="SearchBox" Style="{StaticResource SearchBox}" TextChanged="SearchBox_TextChanged"/>
+                        <TextBlock FontFamily="{StaticResource IconFont}" Text="&#xE721;" FontSize="12" Foreground="{DynamicResource TextSecondaryBrush}" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="12,0,0,0" IsHitTestVisible="False"/>
+                        <TextBlock x:Name="SearchPlaceholder" Text="Search..." FontSize="12.5" Foreground="{DynamicResource TextSecondaryBrush}" VerticalAlignment="Center" Margin="32,0,0,0" IsHitTestVisible="False"/>
                     </Grid>
 
-                    <Popup x:Name="NewPopup" PlacementTarget="{Binding ElementName=NewButton}"
-                           Placement="Bottom" VerticalOffset="8" HorizontalOffset="16"
-                           StaysOpen="False" AllowsTransparency="True" PopupAnimation="Fade">
+                    <Popup x:Name="NewPopup" PlacementTarget="{Binding ElementName=NewButton}" Placement="Bottom" VerticalOffset="8" HorizontalOffset="16" StaysOpen="False" AllowsTransparency="True" PopupAnimation="Fade">
                         <Border Style="{StaticResource PopupSurface}" Width="196">
                             <StackPanel>
                                 <Button Style="{StaticResource PopupMenuButton}" Click="AddFiles_Click">
                                     <StackPanel Orientation="Horizontal">
-                                        <TextBlock FontFamily="{StaticResource IconFont}" Text="&#xE8E5;" FontSize="13"
-                                                   Foreground="{DynamicResource TextSecondaryBrush}"
-                                                   VerticalAlignment="Center" Margin="0,0,10,0"/>
+                                        <TextBlock FontFamily="{StaticResource IconFont}" Text="&#xE8E5;" FontSize="13" Foreground="{DynamicResource TextSecondaryBrush}" VerticalAlignment="Center" Margin="0,0,10,0"/>
                                         <TextBlock x:Name="AddFilesText" Text="Add files" VerticalAlignment="Center"/>
                                     </StackPanel>
                                 </Button>
                                 <Button Style="{StaticResource PopupMenuButton}" Click="AddFolder_Click">
                                     <StackPanel Orientation="Horizontal">
-                                        <TextBlock FontFamily="{StaticResource IconFont}" Text="&#xE8B7;" FontSize="13"
-                                                   Foreground="{DynamicResource TextSecondaryBrush}"
-                                                   VerticalAlignment="Center" Margin="0,0,10,0"/>
+                                        <TextBlock FontFamily="{StaticResource IconFont}" Text="&#xE8B7;" FontSize="13" Foreground="{DynamicResource TextSecondaryBrush}" VerticalAlignment="Center" Margin="0,0,10,0"/>
                                         <TextBlock x:Name="AddFolderText" Text="Add folder" VerticalAlignment="Center"/>
                                     </StackPanel>
                                 </Button>
@@ -211,21 +176,22 @@
             </Border>
 
             <!-- ===== Path bar ===== -->
-            <Border Grid.Row="2" Background="{DynamicResource PanelBrush}"
-                    BorderBrush="{DynamicResource BorderBrush}" BorderThickness="0,0,0,1">
-                <Grid Margin="16,0">
+            <Border Grid.Row="2" Background="{DynamicResource PanelBrush}" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="0,0,0,1">
+                <Grid Margin="12,0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock FontFamily="{StaticResource IconFont}" Text="&#xE8B7;" FontSize="14"
-                               Foreground="{DynamicResource AccentBrush}" VerticalAlignment="Center" Margin="0,0,9,0"/>
-                    <TextBlock x:Name="PathText" Grid.Column="1" Text="" FontSize="12"
-                               VerticalAlignment="Center" TextTrimming="CharacterEllipsis"/>
-                    <TextBlock x:Name="ArchiveInfoText" Grid.Column="2" Text="" FontSize="11.5"
-                               Foreground="{DynamicResource TextSecondaryBrush}"
-                               VerticalAlignment="Center" Margin="16,0,0,0"/>
+                    <StackPanel Orientation="Horizontal" Grid.Column="0" VerticalAlignment="Center">
+                        <Button x:Name="BackButton" Style="{StaticResource IconButton}" Width="28" Height="28" Content="&#xE72B;" Click="BackButton_Click" ToolTip="Back"/>
+                        <Button x:Name="ForwardButton" Style="{StaticResource IconButton}" Width="28" Height="28" Content="&#xE72A;" Click="ForwardButton_Click" ToolTip="Forward"/>
+                        <Button x:Name="UpButton" Style="{StaticResource IconButton}" Width="28" Height="28" Content="&#xE74A;" Click="UpButton_Click" ToolTip="Up"/>
+                        <Button x:Name="HomeButton" Style="{StaticResource IconButton}" Width="28" Height="28" Content="&#xE80F;" Click="HomeButton_Click" ToolTip="Home"/>
+                        <Button x:Name="RefreshButton" Style="{StaticResource IconButton}" Width="28" Height="28" Content="&#xE72C;" Click="RefreshButton_Click" ToolTip="Refresh"/>
+                    </StackPanel>
+                    <TextBox x:Name="PathBox" Grid.Column="1" Style="{StaticResource SearchBox}" Margin="8,0,8,0" Padding="10,6,10,6" KeyDown="PathBox_KeyDown"/>
+                    <TextBlock x:Name="ArchiveInfoText" Grid.Column="2" Text="" FontSize="11.5" Foreground="{DynamicResource TextSecondaryBrush}" VerticalAlignment="Center" Margin="4,0,0,0"/>
                 </Grid>
             </Border>
 
@@ -236,8 +202,7 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
-                <Border Grid.Row="0" Background="{DynamicResource HeaderBrush}"
-                        BorderBrush="{DynamicResource BorderBrush}" BorderThickness="0,0,0,1">
+                <Border Grid.Row="0" Background="{DynamicResource HeaderBrush}" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="0,0,0,1">
                     <Grid Margin="16,0,24,0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="34"/>
@@ -248,10 +213,8 @@
                             <ColumnDefinition Width="140"/>
                         </Grid.ColumnDefinitions>
                         <TextBlock x:Name="HeaderName" Grid.Column="1" Text="Name" Style="{StaticResource ColumnHeaderText}"/>
-                        <TextBlock x:Name="HeaderSize" Grid.Column="2" Text="Size" Style="{StaticResource ColumnHeaderText}"
-                                   HorizontalAlignment="Right" Margin="0,0,10,0"/>
-                        <TextBlock x:Name="HeaderPacked" Grid.Column="3" Text="Packed" Style="{StaticResource ColumnHeaderText}"
-                                   HorizontalAlignment="Right" Margin="0,0,10,0"/>
+                        <TextBlock x:Name="HeaderSize" Grid.Column="2" Text="Size" Style="{StaticResource ColumnHeaderText}" HorizontalAlignment="Right" Margin="0,0,10,0"/>
+                        <TextBlock x:Name="HeaderPacked" Grid.Column="3" Text="Packed" Style="{StaticResource ColumnHeaderText}" HorizontalAlignment="Right" Margin="0,0,10,0"/>
                         <TextBlock x:Name="HeaderType" Grid.Column="4" Text="Type" Style="{StaticResource ColumnHeaderText}"/>
                         <TextBlock x:Name="HeaderModified" Grid.Column="5" Text="Modified" Style="{StaticResource ColumnHeaderText}"/>
                     </Grid>
@@ -264,7 +227,26 @@
                           ScrollViewer.VerticalScrollBarVisibility="Auto"
                           VirtualizingPanel.IsVirtualizing="True"
                           VirtualizingPanel.VirtualizationMode="Recycling"
-                          SelectionMode="Extended">
+                          SelectionMode="Extended"
+                          MouseDoubleClick="FileList_MouseDoubleClick"
+                          SelectionChanged="FileList_SelectionChanged">
+                    <ListView.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem x:Name="CtxOpen" Header="Open" Click="CtxOpen_Click"/>
+                            <MenuItem x:Name="CtxCopy" Header="Copy" Click="CopyButton_Click"/>
+                            <MenuItem x:Name="CtxCut" Header="Cut" Click="CutButton_Click"/>
+                            <MenuItem x:Name="CtxPaste" Header="Paste" Click="PasteButton_Click"/>
+                            <MenuItem x:Name="CtxDelete" Header="Delete" Click="DeleteButton_Click"/>
+                            <MenuItem x:Name="CtxRename" Header="Rename" Click="RenameButton_Click"/>
+                            <Separator/>
+                            <MenuItem x:Name="CtxNewFolder" Header="New folder" Click="NewFolderButton_Click"/>
+                            <MenuItem x:Name="CtxCompress" Header="Compress to archive" Click="CtxCompress_Click"/>
+                            <MenuItem x:Name="CtxExtract" Header="Extract" Click="ExtractButton_Click"/>
+                            <Separator/>
+                            <MenuItem x:Name="CtxProperties" Header="Properties" Click="PropertiesButton_Click"/>
+                            <MenuItem x:Name="CtxHash" Header="Hash (SHA-256)" Click="HashButton_Click"/>
+                        </ContextMenu>
+                    </ListView.ContextMenu>
                     <ListView.ItemTemplate>
                         <DataTemplate DataType="{x:Type models:FileItem}">
                             <Grid Height="38">
@@ -277,29 +259,15 @@
                                     <ColumnDefinition Width="140"/>
                                 </Grid.ColumnDefinitions>
 
-                                <Border x:Name="IconBox" Width="26" Height="26" CornerRadius="7"
-                                        Background="{DynamicResource PanelBrush}"
-                                        HorizontalAlignment="Center" VerticalAlignment="Center">
-                                    <TextBlock x:Name="IconText" Text="{Binding IconGlyph}"
-                                               FontFamily="{StaticResource IconFont}" FontSize="13"
-                                               Foreground="{DynamicResource TextSecondaryBrush}"
-                                               HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                <Border x:Name="IconBox" Width="26" Height="26" CornerRadius="7" Background="{DynamicResource PanelBrush}" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <TextBlock x:Name="IconText" Text="{Binding IconGlyph}" FontFamily="{StaticResource IconFont}" FontSize="13" Foreground="{DynamicResource TextSecondaryBrush}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                 </Border>
 
-                                <TextBlock Grid.Column="1" Text="{Binding DisplayName}" Margin="0,0,12,0"
-                                           VerticalAlignment="Center" TextTrimming="CharacterEllipsis"/>
-                                <TextBlock Grid.Column="2" Text="{Binding SizeText}" Margin="0,0,10,0"
-                                           Foreground="{DynamicResource TextSecondaryBrush}" FontSize="12"
-                                           HorizontalAlignment="Right" VerticalAlignment="Center"/>
-                                <TextBlock Grid.Column="3" Text="{Binding PackedText}" Margin="0,0,10,0"
-                                           Foreground="{DynamicResource TextSecondaryBrush}" FontSize="12"
-                                           HorizontalAlignment="Right" VerticalAlignment="Center"/>
-                                <TextBlock Grid.Column="4" Text="{Binding TypeText}"
-                                           Foreground="{DynamicResource TextSecondaryBrush}" FontSize="12"
-                                           VerticalAlignment="Center" TextTrimming="CharacterEllipsis"/>
-                                <TextBlock Grid.Column="5" Text="{Binding ModifiedText}"
-                                           Foreground="{DynamicResource TextSecondaryBrush}" FontSize="12"
-                                           VerticalAlignment="Center" TextTrimming="CharacterEllipsis"/>
+                                <TextBlock Grid.Column="1" Text="{Binding DisplayName}" Margin="0,0,12,0" VerticalAlignment="Center" TextTrimming="CharacterEllipsis"/>
+                                <TextBlock Grid.Column="2" Text="{Binding SizeText}" Margin="0,0,10,0" Foreground="{DynamicResource TextSecondaryBrush}" FontSize="12" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                                <TextBlock Grid.Column="3" Text="{Binding PackedText}" Margin="0,0,10,0" Foreground="{DynamicResource TextSecondaryBrush}" FontSize="12" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                                <TextBlock Grid.Column="4" Text="{Binding TypeText}" Foreground="{DynamicResource TextSecondaryBrush}" FontSize="12" VerticalAlignment="Center" TextTrimming="CharacterEllipsis"/>
+                                <TextBlock Grid.Column="5" Text="{Binding ModifiedText}" Foreground="{DynamicResource TextSecondaryBrush}" FontSize="12" VerticalAlignment="Center" TextTrimming="CharacterEllipsis"/>
                             </Grid>
                             <DataTemplate.Triggers>
                                 <DataTrigger Binding="{Binding IsDirectory}" Value="True">
@@ -314,22 +282,14 @@
                 <!-- Empty state -->
                 <Grid x:Name="EmptyState" Grid.RowSpan="2" Background="{DynamicResource WindowBackgroundBrush}">
                     <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,0,20">
-                        <Border Width="76" Height="76" CornerRadius="20" Background="{DynamicResource PanelBrush}"
-                                HorizontalAlignment="Center">
-                            <TextBlock FontFamily="{StaticResource IconFont}" Text="&#xE7B8;" FontSize="32"
-                                       Foreground="{DynamicResource AccentBrush}"
-                                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <Border Width="76" Height="76" CornerRadius="20" Background="{DynamicResource PanelBrush}" HorizontalAlignment="Center">
+                            <TextBlock FontFamily="{StaticResource IconFont}" Text="&#xE7B8;" FontSize="32" Foreground="{DynamicResource AccentBrush}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </Border>
-                        <TextBlock x:Name="EmptyTitleText" Text="No archive open" FontSize="19" FontWeight="SemiBold"
-                                   HorizontalAlignment="Center" Margin="0,18,0,6"/>
-                        <TextBlock x:Name="EmptyHintText" Text="Drop an archive here, or click Open" FontSize="13"
-                                   Foreground="{DynamicResource TextSecondaryBrush}" HorizontalAlignment="Center"/>
-                        <Button x:Name="EmptyOpenButton" Style="{StaticResource PrimaryButton}"
-                                HorizontalAlignment="Center" Margin="0,20,0,0" Padding="20,10"
-                                Click="OpenButton_Click">
+                        <TextBlock x:Name="EmptyTitleText" Text="No archive open" FontSize="19" FontWeight="SemiBold" HorizontalAlignment="Center" Margin="0,18,0,6"/>
+                        <TextBlock x:Name="EmptyHintText" Text="Drop an archive here, or click Open" FontSize="13" Foreground="{DynamicResource TextSecondaryBrush}" HorizontalAlignment="Center"/>
+                        <Button x:Name="EmptyOpenButton" Style="{StaticResource PrimaryButton}" HorizontalAlignment="Center" Margin="0,20,0,0" Padding="20,10" Click="OpenButton_Click">
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock FontFamily="{StaticResource IconFont}" Text="&#xE8E5;" FontSize="13"
-                                           VerticalAlignment="Center" Margin="0,0,8,0"/>
+                                <TextBlock FontFamily="{StaticResource IconFont}" Text="&#xE8E5;" FontSize="13" VerticalAlignment="Center" Margin="0,0,8,0"/>
                                 <TextBlock x:Name="EmptyOpenText" Text="Open archive" VerticalAlignment="Center"/>
                             </StackPanel>
                         </Button>
@@ -337,35 +297,25 @@
                 </Grid>
 
                 <!-- Drag & drop overlay -->
-                <Border x:Name="DropOverlay" Grid.RowSpan="2" Visibility="Collapsed" Margin="12"
-                        IsHitTestVisible="False"
-                        Background="{DynamicResource WindowBackgroundBrush}"
-                        BorderBrush="{DynamicResource AccentBrush}" BorderThickness="2" CornerRadius="14">
+                <Border x:Name="DropOverlay" Grid.RowSpan="2" Visibility="Collapsed" Margin="12" IsHitTestVisible="False" Background="{DynamicResource WindowBackgroundBrush}" BorderBrush="{DynamicResource AccentBrush}" BorderThickness="2" CornerRadius="14">
                     <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-                        <TextBlock FontFamily="{StaticResource IconFont}" Text="&#xE896;" FontSize="36"
-                                   Foreground="{DynamicResource AccentBrush}" HorizontalAlignment="Center"/>
-                        <TextBlock x:Name="DropText" Text="Drop to open" FontSize="18" FontWeight="SemiBold"
-                                   HorizontalAlignment="Center" Margin="0,14,0,0"/>
+                        <TextBlock FontFamily="{StaticResource IconFont}" Text="&#xE896;" FontSize="36" Foreground="{DynamicResource AccentBrush}" HorizontalAlignment="Center"/>
+                        <TextBlock x:Name="DropText" Text="Drop to open" FontSize="18" FontWeight="SemiBold" HorizontalAlignment="Center" Margin="0,14,0,0"/>
                     </StackPanel>
                 </Border>
             </Grid>
 
             <!-- ===== Status bar ===== -->
-            <Border Grid.Row="4" Background="{DynamicResource PanelBrush}"
-                    BorderBrush="{DynamicResource BorderBrush}" BorderThickness="0,1,0,0">
+            <Border Grid.Row="4" Background="{DynamicResource PanelBrush}" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="0,1,0,0">
                 <Grid Margin="16,0">
                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                        <Ellipse x:Name="StatusDot" Width="6" Height="6" Fill="{DynamicResource AccentBrush}"
-                                 Margin="0,0,8,0"/>
-                        <TextBlock x:Name="StatusText" Text="Ready" FontSize="11.5"
-                                   Foreground="{DynamicResource TextSecondaryBrush}" VerticalAlignment="Center"/>
+                        <Ellipse x:Name="StatusDot" Width="6" Height="6" Fill="{DynamicResource AccentBrush}" Margin="0,0,8,0"/>
+                        <TextBlock x:Name="StatusText" Text="Ready" FontSize="11.5" Foreground="{DynamicResource TextSecondaryBrush}" VerticalAlignment="Center"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
-                        <TextBlock x:Name="ItemsCountText" Text="" FontSize="11.5"
-                                   Foreground="{DynamicResource TextSecondaryBrush}"/>
+                        <TextBlock x:Name="ItemsCountText" Text="" FontSize="11.5" Foreground="{DynamicResource TextSecondaryBrush}"/>
                         <Border Width="1" Height="10" Background="{DynamicResource BorderBrush}" Margin="10,0"/>
-                        <TextBlock x:Name="TotalSizeText" Text="" FontSize="11.5"
-                                   Foreground="{DynamicResource TextSecondaryBrush}"/>
+                        <TextBlock x:Name="TotalSizeText" Text="" FontSize="11.5" Foreground="{DynamicResource TextSecondaryBrush}"/>
                     </StackPanel>
                 </Grid>
             </Border>
