@@ -10,7 +10,7 @@
     <AssemblyName>zpX</AssemblyName>
     <StartupObject>zpX.UI.Program</StartupObject>
     <ApplicationManifest>app.manifest</ApplicationManifest>
-    <Version>0.7.0</Version>
+    <Version>0.7.1</Version>
     <Authors>zpX</Authors>
     <Product>zpX</Product>
     <ApplicationIcon>Assets\app.ico</ApplicationIcon>

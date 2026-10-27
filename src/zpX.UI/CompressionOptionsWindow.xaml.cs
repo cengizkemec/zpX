@@ -31,7 +31,6 @@ public partial class CompressionOptionsWindow : Window
         CompressionLevel = level;
         Password = string.IsNullOrWhiteSpace(PasswordBox.Password) ? null : PasswordBox.Password;
         EncryptFileNames = EncryptNamesCheckBox.IsChecked == true;
-        CreateSfx = SfxCheckBox.IsChecked == true;
         FormatExtension = (FormatBox.SelectedIndex == 1) ? ".zip" : ArchiveCreator.Extension;
 
         DialogResult = true;

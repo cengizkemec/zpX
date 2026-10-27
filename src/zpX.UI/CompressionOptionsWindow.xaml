@@ -35,8 +35,6 @@
             <PasswordBox x:Name="PasswordBox" Margin="0,0,0,6"/>
             <PasswordBox x:Name="PasswordConfirmBox" Margin="0,0,0,6"/>
             <CheckBox x:Name="EncryptNamesCheckBox" Content="Encrypt file names" Margin="0,0,0,10"/>
-
-            <CheckBox x:Name="SfxCheckBox" Content="Create self-extracting archive (.exe)" Margin="0,0,0,10"/>
         </StackPanel>
 
         <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right">
