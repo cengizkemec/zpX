@@ -1,0 +1,1 @@
+﻿namespace zpX.Core.Abstractions { public interface IArchiveReader : IDisposable { IEnumerable<ArchiveEntry> Entries { get; } bool Test(System.IO.Stream? log = null); System.IO.Stream OpenEntry(ArchiveEntry entry); } }

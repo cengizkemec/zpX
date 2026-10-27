@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/zpX.Core/zpX.Core.csproj" />
+    <Project Path="src/zpX.Infrastructure/zpX.Infrastructure.csproj" />
+    <Project Path="src/zpX.Localization/zpX.Localization.csproj" />
+    <Project Path="src/zpX.UI/zpX.UI.csproj" />
+  </Folder>
+</Solution>
