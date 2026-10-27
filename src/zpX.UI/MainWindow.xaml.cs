@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -24,13 +24,15 @@ public partial class MainWindow : Window
     private sealed class Location
     {
         public bool IsArchive { get; }
+        public bool IsThisPc { get; }
         public string FsPath { get; }
         public string? ArchivePath { get; }
         public string ArchivePrefix { get; }
 
-        public Location(bool isArchive, string fsPath, string? archivePath, string archivePrefix)
+        public Location(bool isArchive, bool isThisPc, string fsPath, string? archivePath, string archivePrefix)
         {
             IsArchive = isArchive;
+            IsThisPc = isThisPc;
             FsPath = fsPath;
             ArchivePath = archivePath;
             ArchivePrefix = archivePrefix;
@@ -53,7 +55,7 @@ public partial class MainWindow : Window
     {
         InitializeComponent();
 
-        _location = new Location(false, Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), null, "");
+        _location = new Location(false, true, "", null, "");
 
         Loaded += MainWindow_Loaded;
         StateChanged += MainWindow_StateChanged;
@@ -150,6 +152,20 @@ public partial class MainWindow : Window
         ExtractText.Text = Loc.T("Extract");
         TestText.Text = Loc.T("Test");
 
+        CopyButton.ToolTip = Loc.T("Copy");
+        CutButton.ToolTip = Loc.T("Cut");
+        PasteButton.ToolTip = Loc.T("Paste");
+        DeleteButton.ToolTip = Loc.T("Delete");
+        RenameButton.ToolTip = Loc.T("Rename");
+        NewFolderButton.ToolTip = Loc.T("NewFolder");
+        PropertiesButton.ToolTip = Loc.T("Properties");
+        HashButton.ToolTip = Loc.T("Hash");
+        BackButton.ToolTip = "Back";
+        ForwardButton.ToolTip = "Forward";
+        UpButton.ToolTip = "Up";
+        HomeButton.ToolTip = "Home";
+        RefreshButton.ToolTip = "Refresh";
+
         AddFilesText.Text = Loc.T("AddFiles");
         AddFolderText.Text = Loc.T("AddFolder");
 
@@ -183,6 +199,9 @@ public partial class MainWindow : Window
         CtxProperties.Header = Loc.T("Properties");
         CtxHash.Header = Loc.T("Hash");
 
+        if (AppSettings.Current.ShellIntegration)
+            ContextMenuRegistrar.Register();
+
         UpdateLanguageChecks();
         _ = RefreshViewAsync();
         if (_location.IsArchive == false && _archivePath is null)
@@ -214,6 +233,34 @@ public partial class MainWindow : Window
 
     private async Task RefreshFileSystemAsync()
     {
+        if (_location.IsThisPc)
+        {
+            var drives = DriveInfo.GetDrives();
+            var driveItems = new List<FileItem>();
+            foreach (var d in drives)
+            {
+                string sizeText = "�";
+                try
+                {
+                    if (d.IsReady)
+                        sizeText = FormatSize(d.TotalSize - d.AvailableFreeSpace) + " used of " + FormatSize(d.TotalSize);
+                }
+                catch { }
+                driveItems.Add(new FileItem
+                {
+                    FullName = d.Name,
+                    IsDirectory = true,
+                    SizeText = sizeText,
+                    TypeText = d.DriveType.ToString() + " Drive",
+                    ModifiedText = "�"
+                });
+            }
+            _allItems.Clear();
+            _allItems.AddRange(driveItems);
+            FileList.ItemsSource = driveItems;
+            return;
+        }
+
         var dir = _location.FsPath;
         List<FileSystemInfo> infos = new();
         try
@@ -242,7 +289,7 @@ public partial class MainWindow : Window
                 IsDirectory = isDir,
                 Size = size,
                 Modified = fsi.LastWriteTime,
-                SizeText = isDir ? "—" : FormatSize(size),
+                SizeText = isDir ? "�" : FormatSize(size),
                 PackedText = "",
                 TypeText = isDir ? Loc.T("Folder") : (string.IsNullOrEmpty(ext) ? Loc.T("File") : ext.TrimStart('.').ToUpperInvariant()),
                 ModifiedText = fsi.LastWriteTime.ToString("g", Loc.Culture)
@@ -326,10 +373,10 @@ public partial class MainWindow : Window
                 Size = isDir ? 0 : (fe?.Size ?? 0),
                 CompressedSize = isDir ? 0 : (fe?.CompressedSize ?? 0),
                 Modified = isDir ? null : fe?.LastModified,
-                SizeText = isDir ? "—" : FormatSize(fe?.Size ?? 0),
-                PackedText = isDir ? "—" : FormatSize(fe?.CompressedSize ?? 0),
+                SizeText = isDir ? "�" : FormatSize(fe?.Size ?? 0),
+                PackedText = isDir ? "�" : FormatSize(fe?.CompressedSize ?? 0),
                 TypeText = isDir ? Loc.T("Folder") : (string.IsNullOrEmpty(Path.GetExtension(name)) ? Loc.T("File") : Path.GetExtension(name).TrimStart('.').ToUpperInvariant()),
-                ModifiedText = (isDir ? null : fe?.LastModified)?.ToLocalTime().ToString("g", Loc.Culture) ?? "—"
+                ModifiedText = (isDir ? null : fe?.LastModified)?.ToLocalTime().ToString("g", Loc.Culture) ?? "�"
             });
         }
 
@@ -344,7 +391,13 @@ public partial class MainWindow : Window
 
     private void UpdatePathBar()
     {
-        if (_location.IsArchive)
+        if (_location.IsThisPc)
+        {
+            PathBox.Text = "This PC";
+            PathBox.IsReadOnly = true;
+            PathBox.ToolTip = null;
+        }
+        else if (_location.IsArchive)
         {
             var display = Path.GetFileName(_location.ArchivePath) + "\\" + _location.ArchivePrefix.TrimEnd('/');
             if (display.EndsWith("\\")) display = Path.GetFileName(_location.ArchivePath);
@@ -395,7 +448,7 @@ public partial class MainWindow : Window
     private async Task NavigateFileSystemAsync(string path, bool pushHistory = true)
     {
         if (!Directory.Exists(path)) return;
-        await NavigateToAsync(new Location(false, path, null, ""), pushHistory);
+        await NavigateToAsync(new Location(false, false, path, null, ""), pushHistory);
     }
 
     private async Task NavigateArchiveAsync(string archivePath, string prefix, bool pushHistory = true)
@@ -422,7 +475,7 @@ public partial class MainWindow : Window
         }
 
         if (!prefix.EndsWith("/") && prefix.Length > 0) prefix += "/";
-        await NavigateToAsync(new Location(true, Path.GetDirectoryName(archivePath) ?? "", archivePath, prefix), pushHistory);
+        await NavigateToAsync(new Location(true, false, Path.GetDirectoryName(archivePath) ?? "", archivePath, prefix), pushHistory);
     }
 
     private async Task GoUpAsync()
@@ -445,9 +498,12 @@ public partial class MainWindow : Window
         }
         else
         {
+            if (_location.IsThisPc) return;
             var parent = Directory.GetParent(_location.FsPath);
             if (parent is not null)
                 await NavigateFileSystemAsync(parent.FullName);
+            else
+                await NavigateToAsync(new Location(false, true, "", null, ""), pushHistory: true);
         }
     }
 
@@ -473,7 +529,7 @@ public partial class MainWindow : Window
 
     private void UpdateToolbarState()
     {
-        var fs = !_location.IsArchive;
+        var fs = !_location.IsArchive && !_location.IsThisPc;
         var selected = FileList.SelectedItems.Cast<FileItem>().ToList();
         var hasSelection = selected.Count > 0;
         var hasFiles = selected.Any(i => !i.IsDirectory);
@@ -494,7 +550,7 @@ public partial class MainWindow : Window
 
         BackButton.IsEnabled = _backStack.Count > 0;
         ForwardButton.IsEnabled = _forwardStack.Count > 0;
-        UpButton.IsEnabled = !_busy && (_location.IsArchive || Directory.GetParent(_location.FsPath) is not null);
+        UpButton.IsEnabled = !_busy && !_location.IsThisPc;
     }
 
     private void FileList_SelectionChanged(object sender, SelectionChangedEventArgs e) => UpdateToolbarState();
@@ -640,7 +696,6 @@ public partial class MainWindow : Window
             });
             var done = Loc.Format("ExtractDone", count);
             SetStatus(done);
-            MessageBox.Show(this, done + Environment.NewLine + target, "zpX", MessageBoxButton.OK, MessageBoxImage.Information);
         }
         catch (Exception ex) { ShowError(ex); SetStatus(Loc.T("Ready"), true); }
         finally { SetBusy(false); }
@@ -738,7 +793,6 @@ public partial class MainWindow : Window
             var saved = ArchiveCreator.EnsureExtension(output);
             var done = Loc.Format("CreateDone", Path.GetFileName(saved));
             SetStatus(done);
-            MessageBox.Show(this, done + Environment.NewLine + saved, "zpX", MessageBoxButton.OK, MessageBoxImage.Information);
         }
         catch (Exception ex) { ShowError(ex); SetStatus(Loc.T("Ready"), true); }
         finally { SetBusy(false); }
@@ -780,7 +834,7 @@ public partial class MainWindow : Window
 
     private async void PasteButton_Click(object sender, RoutedEventArgs e)
     {
-        if (_location.IsArchive) return;
+        if (_location.IsArchive || _location.IsThisPc) return;
         if (_clipboardPaths.Count == 0) return;
 
         try
@@ -822,7 +876,7 @@ public partial class MainWindow : Window
 
     private async void DeleteButton_Click(object sender, RoutedEventArgs e)
     {
-        if (_location.IsArchive) return;
+        if (_location.IsArchive || _location.IsThisPc) return;
         var paths = GetSelectedPaths();
         if (paths.Count == 0) return;
 
@@ -849,7 +903,7 @@ public partial class MainWindow : Window
 
     private async void RenameButton_Click(object sender, RoutedEventArgs e)
     {
-        if (_location.IsArchive) return;
+        if (_location.IsArchive || _location.IsThisPc) return;
         var item = FileList.SelectedItem as FileItem;
         if (item is null) return;
 
@@ -876,7 +930,7 @@ public partial class MainWindow : Window
 
     private async void NewFolderButton_Click(object sender, RoutedEventArgs e)
     {
-        if (_location.IsArchive) return;
+        if (_location.IsArchive || _location.IsThisPc) return;
         var name = Interaction.InputBox(Loc.T("NewFolderName"), "zpX", "New folder");
         if (string.IsNullOrWhiteSpace(name)) return;
         var path = Path.Combine(_location.FsPath, name);
@@ -923,7 +977,7 @@ public partial class MainWindow : Window
         var text = PathBox.Text.Trim();
         if (string.IsNullOrEmpty(text)) return;
 
-        if (_location.IsArchive) return;
+        if (_location.IsArchive || _location.IsThisPc) return;
 
         if (Directory.Exists(text))
             await NavigateFileSystemAsync(text);
@@ -1203,9 +1257,33 @@ public partial class MainWindow : Window
         if (args.Contains("--compress"))
         {
             var idx = Array.IndexOf(args, "--compress");
-            var paths = args.Skip(idx + 1).Where(File.Exists).Concat(args.Skip(idx + 1).Where(Directory.Exists)).ToList();
+            var paths = args.Skip(idx + 1).Where(p => File.Exists(p) || Directory.Exists(p)).ToList();
             if (paths.Count > 0)
-                await CreateArchiveAsync(paths, DefaultArchiveName(paths[0]));
+            {
+                try
+                {
+                    SetBusy(true);
+                    await Task.Run(() =>
+                    {
+                        var first = paths[0];
+                        var dir = Directory.Exists(first)
+                            ? (new DirectoryInfo(first).Parent?.FullName ?? first)
+                            : (Path.GetDirectoryName(first) ?? ".");
+                        var baseName = DefaultArchiveName(first);
+                        var output = Path.Combine(dir, baseName + ArchiveCreator.Extension);
+                        var i = 1;
+                        while (File.Exists(output))
+                        {
+                            output = Path.Combine(dir, $"{baseName} ({i}){ArchiveCreator.Extension}");
+                            i++;
+                        }
+                        ArchiveCreator.Create(paths, new ArchiveCreateOptions { OutputPath = output });
+                    });
+                }
+                catch (Exception ex) { ShowError(ex); }
+                finally { SetBusy(false); }
+            }
+            Dispatcher.Invoke(() => Close());
             return;
         }
 
@@ -1227,12 +1305,12 @@ public partial class MainWindow : Window
                             using var reader = new SharpCompressArchiveReader(archive);
                             reader.ExtractAll(target);
                         });
-                        MessageBox.Show(this, Loc.Format("ExtractDone", 0) + Environment.NewLine + target, "zpX", MessageBoxButton.OK, MessageBoxImage.Information);
                     }
                     catch (Exception ex) { ShowError(ex); }
                     finally { SetBusy(false); }
                 }
             }
+            Dispatcher.Invoke(() => Close());
             return;
         }
 

@@ -15,7 +15,7 @@ A modern, minimal and fast archive tool inspired by Telegram. Built with C# + WP
 
 Get the latest release from [Releases](https://github.com/cengizkemec/zpX/releases).
 
-**v0.4.0** (recommended): run `zpX-win-Setup.exe` — installs zpX with desktop and Start Menu shortcuts, Explorer right-click integration ("Compress with zpX", "Extract here with zpX"), built-in file manager, hashing tools.
+**v0.5.0** (recommended): run `zpX-win-Setup.exe` — adds application icon, localized context menus, themed dialogs, all-drives browser, silent background operations.
 
 Portable: `zpX-0.2.0-win-x64.zip` (extract and run `zpX.exe`; requires .NET 9 Desktop Runtime).
 

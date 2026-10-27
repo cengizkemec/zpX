@@ -4,6 +4,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using zpX.Localization;
 using zpX.UI.Models;
 
 namespace zpX.UI;
@@ -20,6 +21,19 @@ public partial class PropertiesWindow : Window
         _item = item;
         _isArchive = isArchive;
         _location = location;
+
+        IconGlyphText.Text = item.IconGlyph;
+        GeneralTab.Header = Loc.T("General");
+        HashesTab.Header = Loc.T("Hashes");
+        LocationLabel.Text = Loc.T("Location") + ":";
+        SizeLabel.Text = Loc.T("Size") + ":";
+        PackedLabel.Text = Loc.T("Packed") + ":";
+        ModifiedLabel.Text = Loc.T("Modified") + ":";
+        AttributesLabel.Text = Loc.T("Attributes") + ":";
+        CreatedLabel.Text = Loc.T("Created") + ":";
+        ComputeHashesButton.Content = Loc.T("ComputeHashes");
+        CloseButton.Content = Loc.T("Close");
+
 
         NameText.Text = System.IO.Path.GetFileName(item.FullName.TrimEnd('/', '\\'));
         TypeText.Text = item.IsDirectory ? "Folder" : item.TypeText;

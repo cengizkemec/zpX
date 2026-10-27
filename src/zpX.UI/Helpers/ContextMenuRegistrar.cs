@@ -1,12 +1,9 @@
 using System;
 using Microsoft.Win32;
+using zpX.Localization;
 
 namespace zpX.UI.Helpers;
 
-/// <summary>
-/// Registers zpX verbs in the current user's Explorer context menus.
-/// Uses HKCU so it works without administrator rights.
-/// </summary>
 public static class ContextMenuRegistrar
 {
     private static string ExePath => Environment.ProcessPath ?? string.Empty;
@@ -17,20 +14,17 @@ public static class ContextMenuRegistrar
 
         try
         {
-            RegisterVerb(@"Software\Classes\*\shell\zpX", "Compress with zpX",
+            RegisterVerb(@"Software\Classes\*\shell\zpX", Loc.T("CompressWithZpX"),
                 $"\"{ExePath}\" --compress \"%1\"", multiSelect: true);
-            RegisterVerb(@"Software\Classes\Directory\shell\zpX", "Compress with zpX",
+            RegisterVerb(@"Software\Classes\Directory\shell\zpX", Loc.T("CompressWithZpX"),
                 $"\"{ExePath}\" --compress \"%1\"", multiSelect: true);
-            RegisterVerb(@"Software\Classes\Directory\Background\shell\zpX", "Compress this folder with zpX",
+            RegisterVerb(@"Software\Classes\Directory\Background\shell\zpX", Loc.T("CompressFolderWithZpX"),
                 $"\"{ExePath}\" --compress \"%V\"", multiSelect: false);
 
-            RegisterVerb(@"Software\Classes\*\shell\zpX.Extract", "Extract here with zpX",
+            RegisterVerb(@"Software\Classes\*\shell\zpX.Extract", Loc.T("ExtractHereWithZpX"),
                 $"\"{ExePath}\" --extract-here \"%1\"", multiSelect: false);
         }
-        catch
-        {
-            // Registry access is best-effort; never block startup.
-        }
+        catch { }
     }
 
     public static void Unregister()

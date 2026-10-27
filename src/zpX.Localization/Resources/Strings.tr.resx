@@ -58,4 +58,17 @@
   <data name="EmptyFolder" xml:space="preserve"><value>Bu klasör boş</value></data>
   <data name="EmptyFolderHint" xml:space="preserve"><value>Dosyaları buraya bırakın veya araç çubuğunu kullanın</value></data>
   <data name="NewFolderName" xml:space="preserve"><value>Yeni klasör</value></data>
+  <data name="Location" xml:space="preserve"><value>Konum</value></data>
+  <data name="Attributes" xml:space="preserve"><value>Öznitelikler</value></data>
+  <data name="Created" xml:space="preserve"><value>Oluşturulma</value></data>
+  <data name="General" xml:space="preserve"><value>Genel</value></data>
+  <data name="Hashes" xml:space="preserve"><value>Hash'ler</value></data>
+  <data name="ComputeHashes" xml:space="preserve"><value>Hash'leri hesapla</value></data>
+  <data name="CopyAll" xml:space="preserve"><value>Tümünü kopyala</value></data>
+  <data name="Close" xml:space="preserve"><value>Kapat</value></data>
+  <data name="CompressWithZpX" xml:space="preserve"><value>zpX ile sıkıştır</value></data>
+  <data name="ExtractHereWithZpX" xml:space="preserve"><value>Buraya zpX ile çıkar</value></data>
+  <data name="CompressFolderWithZpX" xml:space="preserve"><value>Bu klasörü zpX ile sıkıştır</value></data>
+  <data name="Computing" xml:space="preserve"><value>Hesaplanıyor...</value></data>
+  <data name="Copied" xml:space="preserve"><value>Kopyalandı</value></data>
 </root>

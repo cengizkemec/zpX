@@ -14,7 +14,7 @@
 
         <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,14">
             <Border Width="40" Height="40" CornerRadius="10" Background="{DynamicResource PanelBrush}" Margin="0,0,12,0">
-                <TextBlock Text="{Binding IconGlyph}" FontFamily="Segoe MDL2 Assets" FontSize="18"
+                <TextBlock x:Name="IconGlyphText" Text="" FontFamily="Segoe MDL2 Assets" FontSize="18"
                            Foreground="{DynamicResource AccentBrush}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             </Border>
             <StackPanel VerticalAlignment="Center">
@@ -24,7 +24,7 @@
         </StackPanel>
 
         <TabControl Grid.Row="1" Background="Transparent" BorderThickness="0">
-            <TabItem Header="General">
+            <TabItem x:Name="GeneralTab" Header="General">
                 <Grid Margin="0,10,0,0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="110"/>
@@ -39,26 +39,26 @@
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
 
-                    <TextBlock Grid.Row="0" Grid.Column="0" Text="Location:" Foreground="{DynamicResource TextSecondaryBrush}" Margin="0,4"/>
+                    <TextBlock Grid.Row="0" Grid.Column="0" x:Name="LocationLabel" Text="Location:" Foreground="{DynamicResource TextSecondaryBrush}" Margin="0,4"/>
                     <TextBlock x:Name="LocationText" Grid.Row="0" Grid.Column="1" TextWrapping="Wrap" Margin="0,4"/>
 
-                    <TextBlock Grid.Row="1" Grid.Column="0" Text="Size:" Foreground="{DynamicResource TextSecondaryBrush}" Margin="0,4"/>
+                    <TextBlock Grid.Row="1" Grid.Column="0" x:Name="SizeLabel" Text="Size:" Foreground="{DynamicResource TextSecondaryBrush}" Margin="0,4"/>
                     <TextBlock x:Name="SizeText" Grid.Row="1" Grid.Column="1" Margin="0,4"/>
 
-                    <TextBlock Grid.Row="2" Grid.Column="0" Text="Packed:" Foreground="{DynamicResource TextSecondaryBrush}" Margin="0,4"/>
+                    <TextBlock Grid.Row="2" Grid.Column="0" x:Name="PackedLabel" Text="Packed:" Foreground="{DynamicResource TextSecondaryBrush}" Margin="0,4"/>
                     <TextBlock x:Name="PackedText" Grid.Row="2" Grid.Column="1" Margin="0,4"/>
 
-                    <TextBlock Grid.Row="3" Grid.Column="0" Text="Modified:" Foreground="{DynamicResource TextSecondaryBrush}" Margin="0,4"/>
+                    <TextBlock Grid.Row="3" Grid.Column="0" x:Name="ModifiedLabel" Text="Modified:" Foreground="{DynamicResource TextSecondaryBrush}" Margin="0,4"/>
                     <TextBlock x:Name="ModifiedText" Grid.Row="3" Grid.Column="1" Margin="0,4"/>
 
-                    <TextBlock Grid.Row="4" Grid.Column="0" Text="Attributes:" Foreground="{DynamicResource TextSecondaryBrush}" Margin="0,4"/>
+                    <TextBlock Grid.Row="4" Grid.Column="0" x:Name="AttributesLabel" Text="Attributes:" Foreground="{DynamicResource TextSecondaryBrush}" Margin="0,4"/>
                     <TextBlock x:Name="AttributesText" Grid.Row="4" Grid.Column="1" Margin="0,4"/>
 
-                    <TextBlock Grid.Row="5" Grid.Column="0" Text="Created:" Foreground="{DynamicResource TextSecondaryBrush}" Margin="0,4"/>
+                    <TextBlock Grid.Row="5" Grid.Column="0" x:Name="CreatedLabel" Text="Created:" Foreground="{DynamicResource TextSecondaryBrush}" Margin="0,4"/>
                     <TextBlock x:Name="CreatedText" Grid.Row="5" Grid.Column="1" Margin="0,4"/>
                 </Grid>
             </TabItem>
-            <TabItem Header="Hashes">
+            <TabItem x:Name="HashesTab" Header="Hashes">
                 <StackPanel Margin="0,10,0,0">
                     <Button x:Name="ComputeHashesButton" Content="Compute hashes" Click="ComputeHashesButton_Click" HorizontalAlignment="Left" Padding="12,6" Margin="0,0,0,10"/>
                     <Grid>
@@ -85,6 +85,6 @@
             </TabItem>
         </TabControl>
 
-        <Button Grid.Row="2" Content="Close" Click="CloseButton_Click" HorizontalAlignment="Right" Padding="16,6" Margin="0,12,0,0"/>
+        <Button x:Name="CloseButton" Grid.Row="2" Content="Close" Click="CloseButton_Click" HorizontalAlignment="Right" Padding="16,6" Margin="0,12,0,0"/>
     </Grid>
 </Window>

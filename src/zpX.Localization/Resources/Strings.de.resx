@@ -58,4 +58,17 @@
   <data name="EmptyFolder" xml:space="preserve"><value>Dieser Ordner ist leer</value></data>
   <data name="EmptyFolderHint" xml:space="preserve"><value>Dateien hier ablegen oder Symbolleiste nutzen</value></data>
   <data name="NewFolderName" xml:space="preserve"><value>Neuer Ordner</value></data>
+  <data name="Location" xml:space="preserve"><value>Ort</value></data>
+  <data name="Attributes" xml:space="preserve"><value>Attribute</value></data>
+  <data name="Created" xml:space="preserve"><value>Erstellt</value></data>
+  <data name="General" xml:space="preserve"><value>Allgemein</value></data>
+  <data name="Hashes" xml:space="preserve"><value>Hashes</value></data>
+  <data name="ComputeHashes" xml:space="preserve"><value>Hashes berechnen</value></data>
+  <data name="CopyAll" xml:space="preserve"><value>Alle kopieren</value></data>
+  <data name="Close" xml:space="preserve"><value>Schließen</value></data>
+  <data name="CompressWithZpX" xml:space="preserve"><value>Mit zpX komprimieren</value></data>
+  <data name="ExtractHereWithZpX" xml:space="preserve"><value>Hier mit zpX entpacken</value></data>
+  <data name="CompressFolderWithZpX" xml:space="preserve"><value>Diesen Ordner mit zpX komprimieren</value></data>
+  <data name="Computing" xml:space="preserve"><value>Berechne...</value></data>
+  <data name="Copied" xml:space="preserve"><value>Kopiert</value></data>
 </root>

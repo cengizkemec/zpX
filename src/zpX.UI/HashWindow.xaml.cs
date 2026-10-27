@@ -6,6 +6,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using zpX.Localization;
 
 namespace zpX.UI;
 
@@ -28,12 +29,15 @@ public partial class HashWindow : Window
         foreach (var p in paths)
             _rows.Add(new HashRow { Name = System.IO.Path.GetFileName(p), Path = p });
         HashList.ItemsSource = _rows;
+        ComputeButton.Content = Loc.T("ComputeHashes");
+        CopyButton.Content = Loc.T("CopyAll");
+        StatusText.Text = "";
     }
 
     private async void ComputeButton_Click(object sender, RoutedEventArgs e)
     {
         ComputeButton.IsEnabled = false;
-        StatusText.Text = "Computing...";
+        StatusText.Text = Loc.T("Computing");
 
         await Task.Run(() =>
         {
@@ -54,14 +58,14 @@ public partial class HashWindow : Window
         });
 
         HashList.Items.Refresh();
-        StatusText.Text = "Done";
+        StatusText.Text = Loc.T("Done");
         ComputeButton.IsEnabled = true;
     }
 
     private void CopyButton_Click(object sender, RoutedEventArgs e)
     {
         var text = string.Join(Environment.NewLine, _rows.Select(r => r.Path + "  " + r.Hash));
-        try { Clipboard.SetText(text); StatusText.Text = "Copied"; } catch { }
+        try { Clipboard.SetText(text); StatusText.Text = Loc.T("Copied"); } catch { }
     }
 
     private static string BytesToHex(byte[] bytes)

@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:models="clr-namespace:zpX.UI.Models"
         Title="zpX"
+        Icon="Assets/app.ico"
         Height="760" Width="1180"
         MinHeight="560" MinWidth="960"
         WindowStartupLocation="CenterScreen"
