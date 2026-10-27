@@ -1,1 +1,49 @@
-﻿<?xml version="1.0" encoding="utf-8"?><root><resheader name="resmimetype"><value>text/microsoft-resx</value></resheader><resheader name="reader"><value>System.Resources.ResXResourceReader</value></resheader><resheader name="writer"><value>System.Resources.ResXResourceWriter</value></resheader><data name="AppName" xml:space="preserve"><value>zpX</value></data><data name="MenuOpen" xml:space="preserve"><value>Ouvrir</value></data><data name="MenuExtract" xml:space="preserve"><value>Extraire</value></data><data name="MenuAdd" xml:space="preserve"><value>Ajouter</value></data><data name="MenuTest" xml:space="preserve"><value>Tester</value></data><data name="StatusItems" xml:space="preserve"><value>éléments</value></data><data name="SearchPlaceholder" xml:space="preserve"><value>Rechercher...</value></data><data name="SettingsLanguage" xml:space="preserve"><value>Langue</value></data></root>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="AppName" xml:space="preserve"><value>zpX</value></data>
+  <data name="Open" xml:space="preserve"><value>Ouvrir</value></data>
+  <data name="Extract" xml:space="preserve"><value>Extraire</value></data>
+  <data name="Test" xml:space="preserve"><value>Tester</value></data>
+  <data name="Create" xml:space="preserve"><value>Nouveau</value></data>
+  <data name="Search" xml:space="preserve"><value>Rechercher...</value></data>
+  <data name="Name" xml:space="preserve"><value>Nom</value></data>
+  <data name="Size" xml:space="preserve"><value>Taille</value></data>
+  <data name="Packed" xml:space="preserve"><value>Compressé</value></data>
+  <data name="Type" xml:space="preserve"><value>Type</value></data>
+  <data name="Modified" xml:space="preserve"><value>Modifié</value></data>
+  <data name="Ready" xml:space="preserve"><value>Prêt</value></data>
+  <data name="EmptyTitle" xml:space="preserve"><value>Aucune archive ouverte</value></data>
+  <data name="EmptyHint" xml:space="preserve"><value>Déposez une archive ici ou cliquez sur Ouvrir</value></data>
+  <data name="OpenArchiveTitle" xml:space="preserve"><value>Ouvrir une archive</value></data>
+  <data name="ExtractTitle" xml:space="preserve"><value>Extraire vers un dossier</value></data>
+  <data name="CreateTitle" xml:space="preserve"><value>Choisir des fichiers ou dossiers</value></data>
+  <data name="SaveTitle" xml:space="preserve"><value>Enregistrer l'archive</value></data>
+  <data name="TestTitle" xml:space="preserve"><value>Test de l'archive</value></data>
+  <data name="TestOk" xml:space="preserve"><value>L'archive est saine. {0} entrées vérifiées.</value></data>
+  <data name="TestFailed" xml:space="preserve"><value>Échec du test : {0}</value></data>
+  <data name="OpenFirst" xml:space="preserve"><value>Ouvrez d'abord une archive.</value></data>
+  <data name="ErrorTitle" xml:space="preserve"><value>Erreur</value></data>
+  <data name="Folder" xml:space="preserve"><value>Dossier</value></data>
+  <data name="File" xml:space="preserve"><value>Fichier</value></data>
+  <data name="Theme" xml:space="preserve"><value>Thème</value></data>
+  <data name="Language" xml:space="preserve"><value>Langue</value></data>
+  <data name="Extracting" xml:space="preserve"><value>Extraction : {0}</value></data>
+  <data name="Creating" xml:space="preserve"><value>Création : {0}</value></data>
+  <data name="Done" xml:space="preserve"><value>Terminé</value></data>
+  <data name="ArchiveFilter" xml:space="preserve"><value>Archives</value></data>
+  <data name="AllFiles" xml:space="preserve"><value>Tous les fichiers</value></data>
+  <data name="ItemsCount" xml:space="preserve"><value>{0} éléments</value></data>
+  <data name="ExtractDone" xml:space="preserve"><value>{0} éléments extraits</value></data>
+  <data name="CreateDone" xml:space="preserve"><value>{0} créé</value></data>
+  <data name="Exit" xml:space="preserve"><value>Quitter</value></data>
+  <data name="AddFiles" xml:space="preserve"><value>Ajouter des fichiers</value></data>
+  <data name="AddFolder" xml:space="preserve"><value>Ajouter un dossier</value></data>
+  <data name="DropToOpen" xml:space="preserve"><value>Déposez pour ouvrir</value></data>
+  <data name="Opening" xml:space="preserve"><value>Ouverture de l'archive...</value></data>
+  <data name="Testing" xml:space="preserve"><value>Test : {0}</value></data>
+  <data name="ArchiveManager" xml:space="preserve"><value>Gestionnaire d'archives</value></data>
+</root>

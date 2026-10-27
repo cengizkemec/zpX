@@ -1,1 +1,12 @@
-﻿namespace zpX.Core.Abstractions { public class ArchiveEntry { public string Name { get; set; } = string.Empty; public string FullName { get; set; } = string.Empty; public bool IsDirectory { get; set; } public ulong Size { get; set; } public ulong CompressedSize { get; set; } public DateTime? LastModified { get; set; } public string Key { get; set; } = string.Empty; } }
+﻿namespace zpX.Core.Abstractions;
+
+public sealed class ArchiveEntry
+{
+    public string Key { get; init; } = string.Empty;
+    public string Name { get; init; } = string.Empty;
+    public string FullName { get; init; } = string.Empty;
+    public bool IsDirectory { get; init; }
+    public long Size { get; init; }
+    public long CompressedSize { get; init; }
+    public DateTime? LastModified { get; init; }
+}

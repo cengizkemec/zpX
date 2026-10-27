@@ -1,21 +1,32 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <ItemGroup>
-    <ProjectReference Include="..\zpX.Core\zpX.Core.csproj" />
-    <ProjectReference Include="..\zpX.Localization\zpX.Localization.csproj" />
-    <ProjectReference Include="..\zpX.Infrastructure\zpX.Infrastructure.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Velopack" Version="1.2.161" />
-  </ItemGroup>
-
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net9.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
+    <RootNamespace>zpX.UI</RootNamespace>
+    <AssemblyName>zpX</AssemblyName>
+    <StartupObject>zpX.UI.Program</StartupObject>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <Version>0.2.0</Version>
+    <Authors>zpX</Authors>
+    <Product>zpX</Product>
+    <AssemblyTitle>zpX</AssemblyTitle>
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+    <SelfContained>false</SelfContained>
+    <PublishSingleFile>false</PublishSingleFile>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Velopack" Version="1.2.161" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\zpX.Core\zpX.Core.csproj" />
+    <ProjectReference Include="..\zpX.Localization\zpX.Localization.csproj" />
+    <ProjectReference Include="..\zpX.Infrastructure\zpX.Infrastructure.csproj" />
+  </ItemGroup>
 
 </Project>

@@ -4,6 +4,13 @@
     <TargetFramework>net9.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <RootNamespace>zpX.Localization</RootNamespace>
   </PropertyGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Resources\Strings.resx">
+      <LogicalName>zpX.Localization.Resources.Strings.resources</LogicalName>
+    </EmbeddedResource>
+  </ItemGroup>
 
 </Project>

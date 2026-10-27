@@ -1,42 +1,53 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <SolidColorBrush x:Key="WindowBackgroundBrush" Color="#0F0F0F"/>
-    <SolidColorBrush x:Key="SurfaceBrush" Color="#1F1F1F"/>
-    <SolidColorBrush x:Key="ToolbarBrush" Color="#242424"/>
-    <SolidColorBrush x:Key="HoverBrush" Color="#2F2F2F"/>
-    <SolidColorBrush x:Key="SelectedBrush" Color="#264A75"/>
+    <!-- Telegram-inspired dark palette -->
+    <SolidColorBrush x:Key="WindowBackgroundBrush" Color="#17212B"/>
+    <SolidColorBrush x:Key="PanelBrush" Color="#1B2733"/>
+    <SolidColorBrush x:Key="SurfaceBrush" Color="#232E3C"/>
+    <SolidColorBrush x:Key="ToolbarBrush" Color="#17212B"/>
+    <SolidColorBrush x:Key="HeaderBrush" Color="#1B2733"/>
+    <SolidColorBrush x:Key="HoverBrush" Color="#202B36"/>
+    <SolidColorBrush x:Key="PressedBrush" Color="#2A3948"/>
+    <SolidColorBrush x:Key="SelectedBrush" Color="#2B5278"/>
     <SolidColorBrush x:Key="AccentBrush" Color="#3390EC"/>
-    <SolidColorBrush x:Key="XAccentBrush" Color="#FFFFFF"/>
-    <SolidColorBrush x:Key="TextPrimaryBrush" Color="#FFFFFF"/>
-    <SolidColorBrush x:Key="TextSecondaryBrush" Color="#AAAAAA"/>
-    <SolidColorBrush x:Key="BorderBrush" Color="#333333"/>
+    <SolidColorBrush x:Key="AccentHoverBrush" Color="#4EA4F6"/>
+    <SolidColorBrush x:Key="AccentPressedBrush" Color="#2F7DC4"/>
+    <SolidColorBrush x:Key="TextPrimaryBrush" Color="#F5F8FA"/>
+    <SolidColorBrush x:Key="TextSecondaryBrush" Color="#8095A8"/>
+    <SolidColorBrush x:Key="BorderBrush" Color="#25313D"/>
+    <SolidColorBrush x:Key="XAccentBrush" Color="#3390EC"/>
+    <SolidColorBrush x:Key="DangerBrush" Color="#E5534B"/>
+
     <Style TargetType="Window">
         <Setter Property="Background" Value="{DynamicResource WindowBackgroundBrush}"/>
         <Setter Property="Foreground" Value="{DynamicResource TextPrimaryBrush}"/>
-        <Setter Property="FontFamily" Value="Segoe UI Variable, Segoe UI, Inter, Arial"/>
-        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="FontFamily" Value="Segoe UI Variable Text, Segoe UI, Arial"/>
+        <Setter Property="FontSize" Value="13"/>
+        <Setter Property="TextOptions.TextFormattingMode" Value="Display"/>
+        <Setter Property="TextOptions.TextRenderingMode" Value="ClearType"/>
     </Style>
-    <Style TargetType="Button">
-        <Setter Property="Background" Value="Transparent"/>
+
+    <Style TargetType="TextBlock">
         <Setter Property="Foreground" Value="{DynamicResource TextPrimaryBrush}"/>
-        <Setter Property="BorderBrush" Value="Transparent"/>
-        <Setter Property="BorderThickness" Value="0"/>
-        <Setter Property="Padding" Value="8,4"/>
-        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="TextOptions.TextFormattingMode" Value="Display"/>
+    </Style>
+
+    <Style TargetType="ToolTip">
+        <Setter Property="Background" Value="{DynamicResource SurfaceBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextPrimaryBrush}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Padding" Value="8,5"/>
+        <Setter Property="FontSize" Value="12"/>
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="Button">
-                    <Border x:Name="border" Background="{TemplateBinding Background}" CornerRadius="6" Padding="{TemplateBinding Padding}">
-                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <ControlTemplate TargetType="ToolTip">
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="7" Padding="{TemplateBinding Padding}">
+                        <ContentPresenter/>
                     </Border>
-                    <ControlTemplate.Triggers>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="border" Property="Background" Value="{DynamicResource HoverBrush}"/>
-                        </Trigger>
-                        <Trigger Property="IsPressed" Value="True">
-                            <Setter TargetName="border" Property="Background" Value="{DynamicResource AccentBrush}"/>
-                        </Trigger>
-                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

@@ -1,1 +1,49 @@
-﻿<?xml version="1.0" encoding="utf-8"?><root><resheader name="resmimetype"><value>text/microsoft-resx</value></resheader><resheader name="version"><value>2.0</value></resheader><resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader><resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader><data name="AppName" xml:space="preserve"><value>zpX</value></data><data name="MenuOpen" xml:space="preserve"><value>Aç</value></data><data name="MenuExtract" xml:space="preserve"><value>Çıkar</value></data><data name="MenuAdd" xml:space="preserve"><value>Ekle</value></data><data name="MenuTest" xml:space="preserve"><value>Test</value></data><data name="StatusItems" xml:space="preserve"><value>öğe</value></data><data name="SearchPlaceholder" xml:space="preserve"><value>Ara...</value></data><data name="SettingsLanguage" xml:space="preserve"><value>Dil</value></data></root>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="AppName" xml:space="preserve"><value>zpX</value></data>
+  <data name="Open" xml:space="preserve"><value>Aç</value></data>
+  <data name="Extract" xml:space="preserve"><value>Çıkar</value></data>
+  <data name="Test" xml:space="preserve"><value>Test</value></data>
+  <data name="Create" xml:space="preserve"><value>Yeni</value></data>
+  <data name="Search" xml:space="preserve"><value>Ara...</value></data>
+  <data name="Name" xml:space="preserve"><value>Ad</value></data>
+  <data name="Size" xml:space="preserve"><value>Boyut</value></data>
+  <data name="Packed" xml:space="preserve"><value>Sıkıştırılmış</value></data>
+  <data name="Type" xml:space="preserve"><value>Tür</value></data>
+  <data name="Modified" xml:space="preserve"><value>Değiştirme</value></data>
+  <data name="Ready" xml:space="preserve"><value>Hazır</value></data>
+  <data name="EmptyTitle" xml:space="preserve"><value>Arşiv açık değil</value></data>
+  <data name="EmptyHint" xml:space="preserve"><value>Buraya arşiv bırakın veya Aç'a tıklayın</value></data>
+  <data name="OpenArchiveTitle" xml:space="preserve"><value>Arşiv aç</value></data>
+  <data name="ExtractTitle" xml:space="preserve"><value>Klasöre çıkar</value></data>
+  <data name="CreateTitle" xml:space="preserve"><value>Eklenecek dosya veya klasörleri seçin</value></data>
+  <data name="SaveTitle" xml:space="preserve"><value>Arşivi kaydet</value></data>
+  <data name="TestTitle" xml:space="preserve"><value>Arşiv testi</value></data>
+  <data name="TestOk" xml:space="preserve"><value>Arşiv sağlam. {0} öğe doğrulandı.</value></data>
+  <data name="TestFailed" xml:space="preserve"><value>Arşiv testi başarısız: {0}</value></data>
+  <data name="OpenFirst" xml:space="preserve"><value>Önce bir arşiv açın.</value></data>
+  <data name="ErrorTitle" xml:space="preserve"><value>Hata</value></data>
+  <data name="Folder" xml:space="preserve"><value>Klasör</value></data>
+  <data name="File" xml:space="preserve"><value>Dosya</value></data>
+  <data name="Theme" xml:space="preserve"><value>Tema</value></data>
+  <data name="Language" xml:space="preserve"><value>Dil</value></data>
+  <data name="Extracting" xml:space="preserve"><value>Çıkarılıyor: {0}</value></data>
+  <data name="Creating" xml:space="preserve"><value>Oluşturuluyor: {0}</value></data>
+  <data name="Done" xml:space="preserve"><value>Tamamlandı</value></data>
+  <data name="ArchiveFilter" xml:space="preserve"><value>Arşivler</value></data>
+  <data name="AllFiles" xml:space="preserve"><value>Tüm dosyalar</value></data>
+  <data name="ItemsCount" xml:space="preserve"><value>{0} öğe</value></data>
+  <data name="ExtractDone" xml:space="preserve"><value>{0} öğe çıkarıldı</value></data>
+  <data name="CreateDone" xml:space="preserve"><value>{0} oluşturuldu</value></data>
+  <data name="Exit" xml:space="preserve"><value>Çıkış</value></data>
+  <data name="AddFiles" xml:space="preserve"><value>Dosya ekle</value></data>
+  <data name="AddFolder" xml:space="preserve"><value>Klasör ekle</value></data>
+  <data name="DropToOpen" xml:space="preserve"><value>Açmak için bırakın</value></data>
+  <data name="Opening" xml:space="preserve"><value>Arşiv açılıyor...</value></data>
+  <data name="Testing" xml:space="preserve"><value>Test ediliyor: {0}</value></data>
+  <data name="ArchiveManager" xml:space="preserve"><value>Arşiv yöneticisi</value></data>
+</root>
