@@ -57,6 +57,11 @@ public partial class MainWindow : Window
 
         _location = new Location(false, true, "", null, "");
 
+        ApplyLanguage();
+        BuildLanguageMenu();
+        UpdateThemeGlyph();
+        UpdateSearchPlaceholder();
+
         Loaded += MainWindow_Loaded;
         StateChanged += MainWindow_StateChanged;
         ThemeManager.ThemeChanged += ThemeManager_ThemeChanged;
@@ -65,12 +70,7 @@ public partial class MainWindow : Window
 
     private void MainWindow_Loaded(object sender, RoutedEventArgs e)
     {
-        ApplyLanguage();
-        BuildLanguageMenu();
-        UpdateThemeGlyph();
-        UpdateSearchPlaceholder();
-
-        ContextMenuRegistrar.Register(); // idempotent-ish
+        ContextMenuRegistrar.Register();
 
         _ = RefreshViewAsync();
 
@@ -190,8 +190,12 @@ public partial class MainWindow : Window
         SearchPlaceholder.Text = Loc.T("Search");
         LanguageHeader.Text = Loc.T("Language");
         LanguageButtonText.Text = Loc.CurrentLanguage.ToUpperInvariant();
-        ThemeButton.ToolTip = Loc.T("Theme");
-        LanguageButton.ToolTip = Loc.T("Language");
+        BackButton.ToolTip = Loc.T("Back");
+        ForwardButton.ToolTip = Loc.T("Forward");
+        UpButton.ToolTip = Loc.T("Up");
+        HomeButton.ToolTip = Loc.T("Home");
+        RefreshButton.ToolTip = Loc.T("Refresh");
+        AboutButton.ToolTip = Loc.T("About");
 
         // context menu headers
         CtxOpen.Header = Loc.T("Open");

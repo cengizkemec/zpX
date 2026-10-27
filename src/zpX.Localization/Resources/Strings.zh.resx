@@ -72,4 +72,11 @@
   <data name="CompressFolderWithZpX" xml:space="preserve"><value>Compress this folder with zpX</value></data>
   <data name="Computing" xml:space="preserve"><value>Computing...</value></data>
   <data name="Copied" xml:space="preserve"><value>Copied</value></data>
+  <data name="ThisPC" xml:space="preserve"><value>This PC</value></data>
+  <data name="Back" xml:space="preserve"><value>Back</value></data>
+  <data name="Forward" xml:space="preserve"><value>Forward</value></data>
+  <data name="Up" xml:space="preserve"><value>Up</value></data>
+  <data name="Home" xml:space="preserve"><value>Home</value></data>
+  <data name="Refresh" xml:space="preserve"><value>Refresh</value></data>
+  <data name="About" xml:space="preserve"><value>About</value></data>
 </root>
