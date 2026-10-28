@@ -8,7 +8,6 @@
         Height="760" Width="1180"
         MinHeight="560" MinWidth="960"
         WindowStartupLocation="CenterScreen"
-        WindowStyle="None"
         ResizeMode="CanResize"
         Background="{DynamicResource WindowBackgroundBrush}"
         UseLayoutRounding="True"
