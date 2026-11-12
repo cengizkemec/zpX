@@ -1,5 +1,5 @@
 #define MyAppName "zpX"
-#define MyAppVersion "0.7.1"
+#define MyAppVersion "0.10.2"
 #define MyAppPublisher "Cengiz Kemeç"
 #define MyAppURL "https://cengizkemec.com.tr/"
 #define MyAppExeName "zpX.exe"

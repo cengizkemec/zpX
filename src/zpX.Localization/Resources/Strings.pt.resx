@@ -67,6 +67,9 @@
   <data name="ComputeHashes" xml:space="preserve"><value>Compute hashes</value></data>
   <data name="CopyAll" xml:space="preserve"><value>Copy all</value></data>
   <data name="Close" xml:space="preserve"><value>Close</value></data>
+  <data name="Minimize" xml:space="preserve"><value>Minimize</value></data>
+  <data name="Maximize" xml:space="preserve"><value>Maximize</value></data>
+  <data name="Restore" xml:space="preserve"><value>Restore</value></data>
   <data name="CompressWithZpX" xml:space="preserve"><value>Compress with zpX</value></data>
   <data name="ExtractHereWithZpX" xml:space="preserve"><value>Extract here with zpX</value></data>
   <data name="CompressFolderWithZpX" xml:space="preserve"><value>Compress this folder with zpX</value></data>

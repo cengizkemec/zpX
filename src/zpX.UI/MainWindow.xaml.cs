@@ -131,7 +131,8 @@ public partial class MainWindow : FluentWindow
     {
         var maximized = WindowState == WindowState.Maximized;
         WindowFrame.BorderThickness = maximized ? new Thickness(0) : new Thickness(1);
-        WindowFrame.Margin = maximized ? new Thickness(7) : new Thickness(0);
+        MaximizeButton.Content = maximized ? "\uE923" : "\uE922";
+        MaximizeButton.ToolTip = Loc.T(maximized ? "Restore" : "Maximize");
     }
 
     // ===================== Language =====================
@@ -196,6 +197,11 @@ public partial class MainWindow : FluentWindow
         HomeButton.ToolTip = Loc.T("Home");
         RefreshButton.ToolTip = Loc.T("Refresh");
         AboutButton.ToolTip = Loc.T("About");
+
+        WindowSubtitle.Text = Loc.T("ArchiveManager");
+        MinimizeButton.ToolTip = Loc.T("Minimize");
+        MaximizeButton.ToolTip = Loc.T(WindowState == WindowState.Maximized ? "Restore" : "Maximize");
+        CloseButton.ToolTip = Loc.T("Close");
 
         // context menu headers
         CtxOpen.Header = Loc.T("Open");

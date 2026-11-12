@@ -23,14 +23,40 @@
             BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1">
         <Grid>
             <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
                 <RowDefinition Height="64"/>
                 <RowDefinition Height="44"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="30"/>
             </Grid.RowDefinitions>
 
-            <!-- ===== Toolbar ===== -->
+            <!-- ===== Title bar ===== -->
             <Border Grid.Row="0" Background="{DynamicResource ToolbarBrush}"
+                    BorderBrush="{DynamicResource BorderBrush}" BorderThickness="0,0,0,1"
+                    MouseLeftButtonDown="TitleBar_MouseLeftButtonDown">
+                <Grid>
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="16,0,0,0">
+                        <TextBlock FontSize="18" FontWeight="Bold" VerticalAlignment="Center">
+                            <Run Text="zp"/><Run Text="X" Foreground="{DynamicResource XAccentBrush}"/>
+                        </TextBlock>
+                        <Border Width="1" Height="14" Background="{DynamicResource BorderBrush}" Margin="12,0"/>
+                        <TextBlock x:Name="WindowSubtitle" Text="Archive manager"
+                                   Style="{StaticResource SubtleText}" VerticalAlignment="Center"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
+                        <Button x:Name="MinimizeButton" Style="{StaticResource WindowButton}"
+                                Content="&#xE921;" Click="MinimizeButton_Click" ToolTip="Minimize"/>
+                        <Button x:Name="MaximizeButton" Style="{StaticResource WindowButton}"
+                                Content="&#xE922;" Click="MaximizeButton_Click" ToolTip="Maximize"/>
+                        <Button x:Name="CloseButton" Style="{StaticResource CloseWindowButton}"
+                                Content="&#xE8BB;" Click="CloseButton_Click" ToolTip="Close"/>
+                    </StackPanel>
+                </Grid>
+            </Border>
+
+            <!-- ===== Toolbar ===== -->
+            <Border Grid.Row="1" Background="{DynamicResource ToolbarBrush}"
                     BorderBrush="{DynamicResource BorderBrush}" BorderThickness="0,0,0,1">
                 <Grid Margin="12,0">
                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
@@ -120,7 +146,7 @@
             </Border>
 
             <!-- ===== Path bar ===== -->
-            <Border Grid.Row="1" Background="{DynamicResource PanelBrush}" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="0,0,0,1">
+            <Border Grid.Row="2" Background="{DynamicResource PanelBrush}" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="0,0,0,1">
                 <Grid Margin="12,0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
@@ -140,7 +166,7 @@
             </Border>
 
             <!-- ===== File area ===== -->
-            <Grid Grid.Row="2" Background="{DynamicResource WindowBackgroundBrush}">
+            <Grid Grid.Row="3" Background="{DynamicResource WindowBackgroundBrush}">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="34"/>
                     <RowDefinition Height="*"/>
@@ -258,7 +284,7 @@
             </Grid>
 
             <!-- ===== Status bar ===== -->
-            <Border Grid.Row="3" Background="{DynamicResource PanelBrush}" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="0,1,0,0">
+            <Border Grid.Row="4" Background="{DynamicResource PanelBrush}" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="0,1,0,0">
                 <Grid Margin="16,0">
                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                         <Ellipse x:Name="StatusDot" Width="6" Height="6" Fill="{DynamicResource AccentBrush}" Margin="0,0,8,0"/>

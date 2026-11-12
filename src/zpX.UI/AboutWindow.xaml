@@ -18,7 +18,7 @@
             </Border>
             <StackPanel VerticalAlignment="Center">
                 <TextBlock Text="zpX" FontSize="22" FontWeight="Bold"/>
-                <TextBlock Text="Version 0.7.1" FontSize="12" Foreground="{DynamicResource TextSecondaryBrush}"/>
+                <TextBlock x:Name="VersionText" Text="Version" FontSize="12" Foreground="{DynamicResource TextSecondaryBrush}"/>
             </StackPanel>
         </StackPanel>
 
